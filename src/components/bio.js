@@ -16,6 +16,13 @@ const Bio = () => {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
+          fixed(width: 75, height: 75) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      fbicon: file(absolutePath: { regex: "/facebook-icon.png/" }) {
+        childImageSharp {
           fixed(width: 50, height: 50) {
             ...GatsbyImageSharpFixed
           }
@@ -29,6 +36,10 @@ const Bio = () => {
           }
           social {
             twitter
+            facebook
+            instagram
+            github
+            linkedin
           }
         }
       }
@@ -49,7 +60,7 @@ const Bio = () => {
         style={{
           marginRight: rhythm(1 / 2),
           marginBottom: 0,
-          minWidth: 50,
+          minWidth: 75,
           borderRadius: `100%`,
         }}
         imgStyle={{
@@ -63,6 +74,60 @@ const Bio = () => {
           You should follow him on Twitter
         </a>
       </p>
+      <a href={`${social.facebook}`}>
+      <Image
+        fixed={data.fbicon.childImageSharp.fixed}
+        alt={author.name}
+        style={{
+          marginRight: rhythm(1 / 2),
+          marginBottom: 0,
+          minWidth: 50,
+          borderRadius: `100%`,
+        }}
+        imgStyle={{
+          borderRadius: `50%`,
+        }}
+      />
+      </a>
+      <Image
+        fixed={data.avatar.childImageSharp.fixed}
+        alt={author.name}
+        style={{
+          marginRight: rhythm(1 / 2),
+          marginBottom: 0,
+          minWidth: 75,
+          borderRadius: `100%`,
+        }}
+        imgStyle={{
+          borderRadius: `50%`,
+        }}
+      />
+            <Image
+        fixed={data.avatar.childImageSharp.fixed}
+        alt={author.name}
+        style={{
+          marginRight: rhythm(1 / 2),
+          marginBottom: 0,
+          minWidth: 75,
+          borderRadius: `100%`,
+        }}
+        imgStyle={{
+          borderRadius: `50%`,
+        }}
+      />
+            <Image
+        fixed={data.avatar.childImageSharp.fixed}
+        alt={author.name}
+        style={{
+          marginRight: rhythm(1 / 2),
+          marginBottom: 0,
+          minWidth: 75,
+          borderRadius: `100%`,
+        }}
+        imgStyle={{
+          borderRadius: `50%`,
+        }}
+      />
     </div>
   )
 }

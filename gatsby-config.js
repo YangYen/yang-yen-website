@@ -2,13 +2,17 @@ module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Yang Yen 晏陽`,
+      summary: `一個喜歡運動和音樂的菜鳥工程師`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
       twitter: `kylemathews`,
+      facebook: `https://www.facebook.com/yang.yen.77`,
+      instagram: `https://www.instagram.com/yang_yen1997/`,
+      github:`https://github.com/YangYen`,
+      linkedin:`https://www.linkedin.com/in/陽-晏-04072b106/`,
     },
   },
   plugins: [
