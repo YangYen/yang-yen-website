@@ -96,4 +96,11 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-blog)
 
+## 內容設計
+
+**1. 關於作者**
+**1. 關於運動**
+**1. 關於音樂**
+**1. 關於技術**
+**1. 關於攝影**
 <!-- AUTO-GENERATED-CONTENT:END -->
