@@ -28,6 +28,27 @@ const Bio = () => {
           }
         }
       }
+      igicon: file(absolutePath: { regex: "/instagram-icon.png/" }) {
+        childImageSharp {
+          fixed(width: 50, height: 50) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      githubicon: file(absolutePath: { regex: "/github-icon.png/" }) {
+        childImageSharp {
+          fixed(width: 50, height: 50) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      linkedinicon: file(absolutePath: { regex: "/linkedin-icon.png/" }) {
+        childImageSharp {
+          fixed(width: 50, height: 50) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
       site {
         siteMetadata {
           author {
@@ -67,21 +88,36 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
+      <div
+          //  style={{
+          //   marginBottom: rhythm(0.05),
+          // }}
+          >
       <p>
-        Written by <strong>{author.name}</strong> {author.summary}
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
+        {/* Written by */}
+         <strong>{author.name}</strong>
+         
+         
+        
+        {/* <a href={`https://twitter.com/${social.twitter}`}>
           You should follow him on Twitter
-        </a>
+        </a> */}
       </p>
-      <a href={`${social.facebook}`}>
+      <p>
+      {author.summary}
+      </p>
+      </div>
+      
+      <a  href={`${social.facebook}`} >
       <Image
         fixed={data.fbicon.childImageSharp.fixed}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
+          marginLeft: rhythm(1 / 2),
           marginBottom: 0,
-          minWidth: 50,
+          marginTop:rhythm(1.5),
+          // minWidth: 50,
           borderRadius: `100%`,
         }}
         imgStyle={{
@@ -89,45 +125,54 @@ const Bio = () => {
         }}
       />
       </a>
+      <a href={`${social.instagram}`}>
       <Image
-        fixed={data.avatar.childImageSharp.fixed}
+        fixed={data.igicon.childImageSharp.fixed}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
           marginBottom: 0,
-          minWidth: 75,
+          marginTop:rhythm(1.5),
+          // minWidth: 75,
           borderRadius: `100%`,
         }}
         imgStyle={{
           borderRadius: `50%`,
         }}
       />
-            <Image
-        fixed={data.avatar.childImageSharp.fixed}
+      </a>
+      <a href={`${social.github}`}>
+      <Image
+        fixed={data.githubicon.childImageSharp.fixed}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
           marginBottom: 0,
-          minWidth: 75,
+          marginTop:rhythm(1.5),
+          // minWidth: 75,
           borderRadius: `100%`,
         }}
         imgStyle={{
           borderRadius: `50%`,
         }}
       />
-            <Image
-        fixed={data.avatar.childImageSharp.fixed}
+      </a>
+      <a href={`${social.linkedin}`}>
+      <Image
+        fixed={data.linkedinicon.childImageSharp.fixed}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
           marginBottom: 0,
-          minWidth: 75,
+          marginTop:rhythm(1.5),
+          // minWidth: 75,
           borderRadius: `100%`,
         }}
         imgStyle={{
           borderRadius: `50%`,
         }}
       />
+      </a>
     </div>
   )
 }

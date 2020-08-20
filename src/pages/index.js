@@ -11,6 +11,7 @@ const BlogIndex = ({ data, location }) => {
   const posts = data.allMarkdownRemark.edges
 
   return (
+    
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
@@ -22,6 +23,7 @@ const BlogIndex = ({ data, location }) => {
               <h3
                 style={{
                   marginBottom: rhythm(1 / 4),
+                  // width: rhythm(70),
                 }}
               >
                 <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
