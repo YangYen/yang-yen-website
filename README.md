@@ -98,9 +98,9 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 ## 內容設計
 
-**1. 關於作者**
-**1. 關於運動**
-**1. 關於音樂**
-**1. 關於技術**
-**1. 關於攝影**
+1. **關於作者**
+2. **關於運動**
+3. **關於音樂**
+4. **關於技術**
+5. **關於攝影**
 <!-- AUTO-GENERATED-CONTENT:END -->
