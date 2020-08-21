@@ -14,6 +14,13 @@ module.exports = {
       github:`https://github.com/YangYen`,
       linkedin:`https://www.linkedin.com/in/陽-晏-04072b106/`,
     },
+    mainPages: {
+      aboutMe: `aboutMe`,
+      aboutSport: `aboutSport`,
+      aboutMusic: `aboutMusic`,
+      aboutTech: `aboutTech`,
+      aboutPhoto: `aboutPhoto`,
+    },
   },
   plugins: [
     {
@@ -28,6 +35,41 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/about_me`,
+        name: `about_me`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/about_music`,
+        name: `about_music`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/about_photo`,
+        name: `about_photo`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/about_sport`,
+        name: `about_sport`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/about_tech`,
+        name: `about_tech`,
       },
     },
     {
