@@ -16,6 +16,7 @@ const NavItem = styled(Link)`
   margin: 0 1vw;
   transition: all 200ms ease-in;
   position: relative;
+  box-shadow: none;
 
   :after {
     position: absolute;

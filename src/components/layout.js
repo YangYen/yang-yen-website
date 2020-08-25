@@ -10,11 +10,12 @@ const Layout = ({ location, title, children }) => {
 
   if (location.pathname === rootPath) {
     header = (
-      <h1
+      <h1 class="text-center"
         style={{
           ...scale(0.5),
           marginBottom: rhythm(1.5),
           marginTop: 0,
+          
         }}
       >
         <Link

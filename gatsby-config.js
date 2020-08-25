@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Yang Yen's Blog`,
     author: {
       name: `Yang Yen 晏陽`,
       summary: `一個喜歡運動和音樂的菜鳥工程師`,

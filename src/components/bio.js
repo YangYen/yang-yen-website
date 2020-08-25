@@ -6,19 +6,57 @@
  */
 
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
-
+import styled from "styled-components"
 import { rhythm } from "../utils/typography"
+
+const NavItem = styled(Link)`
+text-decoration: none;
+color: #111;
+display: inline-block;
+white-space: nowrap;
+margin: 0 0;
+transition: all 200ms ease-in;
+position: relative;
+box-shadow: none;
+
+
+:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0%;
+  content: ".";
+  color: transparent;
+  background: goldenrod;
+  height: 1px;
+  transition: all 0.4s ease-in;
+}
+
+:hover {
+  color: goldenrod;
+  ::after {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  padding: 20px 0;
+  font-size: 1.5rem;
+  z-index: 6;
+}
+`
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
-          fixed(width: 75, height: 75) {
-            ...GatsbyImageSharpFixed
-          }
+            fixed(pngQuality: 100) {
+              ...GatsbyImageSharpFixed
+            }
         }
       }
       fbicon: file(absolutePath: { regex: "/facebook-icon.png/" }) {
@@ -71,8 +109,9 @@ const Bio = () => {
   return (
     <div
       style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
+        display: `block`,
+        // marginBottom: rhythm(2.5),
+        marginBottom: 0,
       }}
     >
       <Image
@@ -81,11 +120,12 @@ const Bio = () => {
         style={{
           marginRight: rhythm(1 / 2),
           marginBottom: 0,
-          minWidth: 75,
-          borderRadius: `100%`,
+          minWidth: 300,
+          minHeight: 150,
+          // borderRadius: `100%`,
         }}
         imgStyle={{
-          borderRadius: `50%`,
+          borderRadius: `10%`,
         }}
       />
       <div
@@ -107,9 +147,8 @@ const Bio = () => {
       {author.summary}
       </p>
       </div>
-      
-      <a  href={`${social.facebook}`} >
-      <Image
+
+      <NavItem to={`${social.facebook}`}>      <Image
         fixed={data.fbicon.childImageSharp.fixed}
         alt={author.name}
         style={{
@@ -123,56 +162,58 @@ const Bio = () => {
         imgStyle={{
           borderRadius: `50%`,
         }}
-      />
-      </a>
-      <a href={`${social.instagram}`}>
-      <Image
+      /></NavItem>
+
+        <NavItem to={`${social.instagram}`}>      
+        <Image
         fixed={data.igicon.childImageSharp.fixed}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
+          marginLeft: rhythm(1 / 2),
           marginBottom: 0,
           marginTop:rhythm(1.5),
-          // minWidth: 75,
+          // minWidth: 50,
           borderRadius: `100%`,
         }}
         imgStyle={{
           borderRadius: `50%`,
         }}
-      />
-      </a>
-      <a href={`${social.github}`}>
-      <Image
+      /></NavItem>
+
+        <NavItem to={`${social.github}`}>      
+        <Image
         fixed={data.githubicon.childImageSharp.fixed}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
+          marginLeft: rhythm(1 / 2),
           marginBottom: 0,
           marginTop:rhythm(1.5),
-          // minWidth: 75,
+          // minWidth: 50,
           borderRadius: `100%`,
         }}
         imgStyle={{
           borderRadius: `50%`,
         }}
-      />
-      </a>
-      <a href={`${social.linkedin}`}>
-      <Image
+      /></NavItem>
+
+        <NavItem to={`${social.linkedin}`}>      
+        <Image
         fixed={data.linkedinicon.childImageSharp.fixed}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
+          marginLeft: rhythm(1 / 2),
           marginBottom: 0,
           marginTop:rhythm(1.5),
-          // minWidth: 75,
+          // minWidth: 50,
           borderRadius: `100%`,
         }}
         imgStyle={{
           borderRadius: `50%`,
         }}
-      />
-      </a>
+      /></NavItem>
     </div>
   )
 }
