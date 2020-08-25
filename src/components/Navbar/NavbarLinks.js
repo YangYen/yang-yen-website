@@ -4,6 +4,10 @@ import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
+var myList = new Array()
+var url = String()
+var urlSet = new Set()
+
 const NavItem = styled(Link)`
   text-decoration: none;
   color: #111;
@@ -46,30 +50,60 @@ const NavbarLinks = () => {
         allMarkdownRemark {
         edges {
             node {
-            fields {
+              fields {
                 slug
-            }
-            frontmatter {
-                title
-            }
+              }
+              frontmatter {
+                  title
+                  category
+              }
             }
         }
         }
     }
     `)
     const posts = data.allMarkdownRemark.edges
+
+    // {posts.map(({ node }) => {
+      
+    //   const title = node.frontmatter.title || node.fields.slug
+    //   const title2 = node.frontmatter.category 
+    
+    //   if(urlSet.has(title2)){
+    //     // break
+    //     // urlSet.delete(title2)
+        
+    //     // console.log("error")
+    //   }else{
+    //     urlSet.add(title2)
+    //     // console.log(title2) 
+    //     // return(<NavItem to={"/"+title2}>{title2}</NavItem>)
+        
+    //     // url = title2
+    //   }
+
+
+      
+    //   //  console.log(title2)  
+    // })}
+    // const iterator1 = urlSet.values()
+    // let result = iterator1.next()
+    // while(!result.done){
+    //   console.log(result.value)
+    //   result = iterator1.next()
+    // }
+
+    
   return (
     <>
-    {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-                <NavItem to={node.fields.slug}>{title}</NavItem>
-        )
-      })}
-      {/* <NavItem to="/">About</NavItem>
-      <NavItem to="/404">Services</NavItem>
-      <NavItem to="/">Gallery</NavItem>
-      <NavItem to="/404">Contact</NavItem> */}
+  
+      {/* TODO 動態生成NavBar連結 */}
+      <NavItem to="/aboutme">關於作者</NavItem>
+      <NavItem to="/aboutblog">部落格</NavItem>
+      <NavItem to="/aboutmusic">音樂</NavItem>
+      <NavItem to="/aboutphoto">攝影</NavItem>
+      <NavItem to="/aboutsport">運動</NavItem>
+      <NavItem to="/abouttech">科技</NavItem> 
     </>
   )
 }

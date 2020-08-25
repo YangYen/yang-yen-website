@@ -9,13 +9,15 @@ import { rhythm } from "../utils/typography"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
+  var myList = new Array()
+  // const mainPages = data.allMarkdownRemark.edges
 
   return (
     
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
-      {posts.map(({ node }) => {
+      {/* {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article key={node.fields.slug}>
@@ -41,6 +43,39 @@ const BlogIndex = ({ data, location }) => {
             </section>
           </article>
         )
+      })} */}
+      
+      {posts.map(({ node }) => {
+        const title = node.frontmatter.category 
+        if(myList.includes(title)){
+          // break
+        }else{
+          myList.push(title)
+          return (
+            <article key={title}>
+              <header>
+                <h3
+                  style={{
+                    marginBottom: rhythm(1 / 4),
+                    // width: rhythm(70),
+                  }}
+                >
+                  <Link style={{ boxShadow: `none` }} to={title}>
+                    {title}
+                  </Link>
+                </h3>
+                {/* <small>{date}</small> */}
+              </header>
+              {/* <section>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: description ,
+                  }}
+                />
+              </section> */}
+            </article>
+          )
+        }
       })}
     </Layout>
   )
@@ -66,6 +101,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            category
           }
         }
       }

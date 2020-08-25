@@ -5,6 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const mainPages = path.resolve(`./src/templates/main-pages.js`)
   const result = await graphql(
     `
       {
@@ -19,6 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                category
               }
             }
           }
@@ -47,6 +49,17 @@ exports.createPages = async ({ graphql, actions }) => {
         next,
       },
     })
+
+    createPage({
+      path: post.node.frontmatter.category,
+      component: mainPages,
+      context: {
+        category: post.node.frontmatter.category,
+        slug: post.node.fields.slug,
+        previous,
+        next,
+      },
+    })
   })
 }
 
@@ -57,6 +70,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
+      node,
+      value,
+    })
+
+    createNodeField({
+      name: `category`,
       node,
       value,
     })
