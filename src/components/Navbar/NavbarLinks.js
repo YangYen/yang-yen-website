@@ -1,12 +1,15 @@
 // NavbarLinks.js
 
-import React from "react"
+import React, { useState } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import { UncontrolledButtonDropdown, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { rhythm, scale } from "../../utils/typography"
 
 var myList = new Array()
 var url = String()
 var urlSet = new Set()
+
 
 const NavItem = styled(Link)`
   text-decoration: none;
@@ -47,64 +50,95 @@ const NavItem = styled(Link)`
 
 const NavbarLinks = () => {
   const data = useStaticQuery(graphql`
-    query {
-        allMarkdownRemark {
-        edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                  title
-                  category
-              }
-            }
+  {
+    allMarkdownRemark(filter: {frontmatter: {type: {eq: "medium_page"}}}) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            branch
+            type
+            categoryname
+          }
         }
-        }
+      }
     }
-    `)
-    const posts = data.allMarkdownRemark.edges
-
-    // {posts.map(({ node }) => {
-      
-    //   const title = node.frontmatter.title || node.fields.slug
-    //   const title2 = node.frontmatter.category 
     
-    //   if(urlSet.has(title2)){
-    //     // break
-    //     // urlSet.delete(title2)
-        
-    //     // console.log("error")
-    //   }else{
-    //     urlSet.add(title2)
-    //     // console.log(title2) 
-    //     // return(<NavItem to={"/"+title2}>{title2}</NavItem>)
-        
-    //     // url = title2
-    //   }
+    data2:allMarkdownRemark(filter: {frontmatter: {type: {eq: "basic_page"}}}) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              branch
+              type
+              title
+            }
+          }
+        }
+      }
+  }
+    `)
 
 
-      
-    //   //  console.log(title2)  
-    // })}
-    // const iterator1 = urlSet.values()
-    // let result = iterator1.next()
-    // while(!result.done){
-    //   console.log(result.value)
-    //   result = iterator1.next()
-    // }
+
+    const posts = data.allMarkdownRemark.edges
+    const [dropdownOpen, setOpen] = useState(false);
+    const toggle = () => setOpen(!dropdownOpen);
+
+    const posts2 = data.data2.edges
 
     
   return (
     <>
-  
-      {/* TODO 動態生成NavBar連結 */}
-      <NavItem to="/aboutme">關於作者</NavItem>
-      <NavItem to="/aboutblog">部落格</NavItem>
-      <NavItem to="/aboutmusic">音樂</NavItem>
-      <NavItem to="/aboutphoto">攝影</NavItem>
-      <NavItem to="/aboutsport">運動</NavItem>
-      <NavItem to="/abouttech">科技</NavItem> 
+                
+      {posts.map(({ node }) => {
+        const branch = node.frontmatter.branch 
+        const categoryname = node.frontmatter.categoryname
+        return (
+          <article key={node.fields.slug}>
+            <header>
+              <h3
+                style={{
+                  marginBottom: rhythm(1 / 4),
+                  // width: rhythm(70),
+                }}
+              >
+                  
+                  {/* <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+                   */}
+                  <UncontrolledButtonDropdown>
+                  <DropdownToggle caret color="secondary">
+                    <NavItem to={"/"+branch}>{categoryname}</NavItem>
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    {posts2.map(({node})=>{
+                      const branch2 = node.frontmatter.branch
+                      if(branch==branch2){
+                        return(
+                        <DropdownItem href={node.fields.slug}>{node.frontmatter.title}</DropdownItem>
+                          )
+                      }
+                      })}
+                    {/* <DropdownItem header>Header</DropdownItem>
+                    <DropdownItem disabled>Action</DropdownItem>
+                    <DropdownItem>Another Action</DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>Another Action</DropdownItem> */}
+                  </DropdownMenu>
+                  {/* </ButtonDropdown> */}
+                  </UncontrolledButtonDropdown>
+                
+              </h3>
+            </header>
+          </article>
+        )
+      })}
+
+
     </>
   )
 }

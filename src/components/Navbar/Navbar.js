@@ -5,6 +5,7 @@ import NavbarLinks from "./NavbarLinks"
 import Logo from "./Logo"
 import styled from 'styled-components'
 
+
 const Navigation = styled.nav`
   height: 10vh;
   display: flex;
@@ -112,8 +113,10 @@ const Navbar = () => {
           <NavbarLinks />
         </Navbox>
       )}
+      
     </Navigation>
   )
 }
 
 export default Navbar
+

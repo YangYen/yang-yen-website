@@ -123,7 +123,7 @@ export const pageQuery = graphql`
           title
         }
       }
-    allMarkdownRemark(filter: {frontmatter: {category: {eq: $category}}}) {
+    allMarkdownRemark(filter: {frontmatter: {category: {eq: $category},type: {eq: "basic_page"}}}) {
       edges {
         node {
           id

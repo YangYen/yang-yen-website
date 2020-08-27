@@ -3,6 +3,9 @@ title: Hello World
 date: "2015-05-01T22:12:03.284Z"
 description: "Hello World"
 category: "aboutblog"
+categoryname: "部落格"
+type: "basic_page"
+branch: "aboutblog"
 ---
 
 This is my first post on my new fake blog! How exciting!

@@ -10,6 +10,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
+import { Button } from "react-bootstrap"
 
 const NavItem = styled(Link)`
 text-decoration: none;
@@ -59,30 +60,30 @@ const Bio = () => {
             }
         }
       }
-      fbicon: file(absolutePath: { regex: "/facebook-icon.png/" }) {
-        childImageSharp {
-          fixed(width: 50, height: 50) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
       igicon: file(absolutePath: { regex: "/instagram-icon.png/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 60, height: 60, pngQuality: 100) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       githubicon: file(absolutePath: { regex: "/github-icon.png/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 60, height: 60, pngQuality: 100) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       linkedinicon: file(absolutePath: { regex: "/linkedin-icon.png/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 60, height: 60, pngQuality: 100) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      youtubeicon: file(absolutePath: { regex: "/youtube-icon.png/" }) {
+        childImageSharp {
+          fixed(width: 60, height: 60, pngQuality: 100) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -95,10 +96,10 @@ const Bio = () => {
           }
           social {
             twitter
-            facebook
             instagram
             github
             linkedin
+            youtube
           }
         }
       }
@@ -106,6 +107,7 @@ const Bio = () => {
   `)
 
   const { author, social } = data.site.siteMetadata
+
   return (
     <div
       style={{
@@ -148,22 +150,6 @@ const Bio = () => {
       </p>
       </div>
 
-      <NavItem to={`${social.facebook}`}>      <Image
-        fixed={data.fbicon.childImageSharp.fixed}
-        alt={author.name}
-        style={{
-          marginRight: rhythm(1 / 2),
-          marginLeft: rhythm(1 / 2),
-          marginBottom: 0,
-          marginTop:rhythm(1.5),
-          // minWidth: 50,
-          borderRadius: `100%`,
-        }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
-      /></NavItem>
-
         <NavItem to={`${social.instagram}`}>      
         <Image
         fixed={data.igicon.childImageSharp.fixed}
@@ -201,6 +187,23 @@ const Bio = () => {
         <NavItem to={`${social.linkedin}`}>      
         <Image
         fixed={data.linkedinicon.childImageSharp.fixed}
+        alt={author.name}
+        style={{
+          marginRight: rhythm(1 / 2),
+          marginLeft: rhythm(1 / 2),
+          marginBottom: 0,
+          marginTop:rhythm(1.5),
+          // minWidth: 50,
+          borderRadius: `100%`,
+        }}
+        imgStyle={{
+          borderRadius: `50%`,
+        }}
+      /></NavItem>
+
+      <NavItem to={`${social.youtube}`}>      
+        <Image
+        fixed={data.youtubeicon.childImageSharp.fixed}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
