@@ -10,9 +10,9 @@ module.exports = {
     social: {
       twitter: `kylemathews`,
       instagram: `https://www.instagram.com/yang__9797/`,
-      github:`https://github.com/YangYen`,
-      linkedin:`https://www.linkedin.com/in/陽-晏-04072b106/`,
-      youtube:`https://www.youtube.com/channel/UC3ZfsIHLYW_A7RTL0CSpe2Q`,
+      github: `https://github.com/YangYen`,
+      linkedin: `https://www.linkedin.com/in/陽-晏-04072b106/`,
+      youtube: `https://www.youtube.com/channel/UC3ZfsIHLYW_A7RTL0CSpe2Q`,
     },
     mainPages: {
       aboutMe: `aboutMe`,
@@ -96,6 +96,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

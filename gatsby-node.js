@@ -12,7 +12,7 @@ exports.createPages = async ({ graphql, actions }) => {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
-          filter: {frontmatter: {type: {eq: "basic_page"}}}
+          filter: { frontmatter: { type: { eq: "basic_page" } } }
         ) {
           edges {
             node {

@@ -3,8 +3,7 @@
 import React, { useState } from "react"
 import NavbarLinks from "./NavbarLinks"
 import Logo from "./Logo"
-import styled from 'styled-components'
-
+import styled from "styled-components"
 
 const Navigation = styled.nav`
   height: 10vh;
@@ -63,7 +62,7 @@ const Hamburger = styled.div`
   background-color: #111;
   width: 30px;
   height: 3px;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
   align-self: center;
   position: relative;
   transform: ${props => (props.open ? "rotate(-45deg)" : "inherit")};
@@ -91,7 +90,6 @@ const Hamburger = styled.div`
   }
 `
 
-
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false)
 
@@ -113,10 +111,8 @@ const Navbar = () => {
           <NavbarLinks />
         </Navbox>
       )}
-      
     </Navigation>
   )
 }
 
 export default Navbar
-

@@ -3,13 +3,18 @@
 import React, { useState } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
-import { UncontrolledButtonDropdown, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { rhythm, scale } from "../../utils/typography"
+import {
+  UncontrolledButtonDropdown,
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Spinner,
+} from "reactstrap"
 
 var myList = new Array()
 var url = String()
 var urlSet = new Set()
-
 
 const NavItem = styled(Link)`
   text-decoration: none;
@@ -36,8 +41,10 @@ const NavItem = styled(Link)`
 
   :hover {
     color: goldenrod;
+    text-decoration: none;
+    opacity: 1;
     ::after {
-      width: 100%;
+      width: 80%;
     }
   }
 
@@ -50,23 +57,27 @@ const NavItem = styled(Link)`
 
 const NavbarLinks = () => {
   const data = useStaticQuery(graphql`
-  {
-    allMarkdownRemark(filter: {frontmatter: {type: {eq: "medium_page"}}}) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            branch
-            type
-            categoryname
+    {
+      allMarkdownRemark(
+        filter: { frontmatter: { type: { eq: "medium_page" } } }
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              branch
+              type
+              categoryname
+            }
           }
         }
       }
-    }
-    
-    data2:allMarkdownRemark(filter: {frontmatter: {type: {eq: "basic_page"}}}) {
+
+      data2: allMarkdownRemark(
+        filter: { frontmatter: { type: { eq: "basic_page" } } }
+      ) {
         edges {
           node {
             fields {
@@ -80,65 +91,55 @@ const NavbarLinks = () => {
           }
         }
       }
-  }
-    `)
+    }
+  `)
 
+  const posts = data.allMarkdownRemark.edges
+  const [dropdownOpen, setOpen] = useState(false)
+  const toggle = () => setOpen(!dropdownOpen)
 
+  const posts2 = data.data2.edges
 
-    const posts = data.allMarkdownRemark.edges
-    const [dropdownOpen, setOpen] = useState(false);
-    const toggle = () => setOpen(!dropdownOpen);
-
-    const posts2 = data.data2.edges
-
-    
   return (
     <>
-                
       {posts.map(({ node }) => {
-        const branch = node.frontmatter.branch 
+        const branch = node.frontmatter.branch
         const categoryname = node.frontmatter.categoryname
         return (
           <article key={node.fields.slug}>
             <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                  // width: rhythm(70),
-                }}
-              >
-                  
-                  {/* <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                   */}
-                  <UncontrolledButtonDropdown>
-                  <DropdownToggle caret color="secondary">
+              <h3>
+                <UncontrolledButtonDropdown>
+                  <DropdownToggle style={{ opacity: 0.75 }} caret color="info">
                     <NavItem to={"/"+branch}>{categoryname}</NavItem>
                   </DropdownToggle>
                   <DropdownMenu>
-                    {posts2.map(({node})=>{
-                      const branch2 = node.frontmatter.branch
-                      if(branch==branch2){
-                        return(
-                        <DropdownItem href={node.fields.slug}>{node.frontmatter.title}</DropdownItem>
-                          )
-                      }
-                      })}
-                    {/* <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem disabled>Action</DropdownItem>
-                    <DropdownItem>Another Action</DropdownItem>
+                    <DropdownItem header>
+                      <Spinner size="sm" color="primary" /> 文章列表
+                    </DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Another Action</DropdownItem> */}
+                    {posts2.map(({ node }) => {
+                      const branch2 = node.frontmatter.branch
+                      if (branch == branch2) {
+                        return (
+                          <NavItem>
+                            <DropdownItem
+                              style={{ boxShadow: `none` }}
+                              href={node.fields.slug}
+                            >
+                              {node.frontmatter.title}
+                            </DropdownItem>
+                          </NavItem>
+                        )
+                      }
+                    })}
                   </DropdownMenu>
-                  {/* </ButtonDropdown> */}
-                  </UncontrolledButtonDropdown>
-                
+                </UncontrolledButtonDropdown>
               </h3>
             </header>
           </article>
         )
       })}
-
-
     </>
   )
 }

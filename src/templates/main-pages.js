@@ -13,15 +13,13 @@ import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
 const MainPageTemplate = ({ data, pageContext, location }) => {
-//   const post = data.markdownRemark
+  //   const post = data.markdownRemark
   const posts = data.allMarkdownRemark.edges
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
-      
-      
       {/* <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -83,7 +81,7 @@ const MainPageTemplate = ({ data, pageContext, location }) => {
           </li>
         </ul>
       </nav> */}
-        {posts.map(({ node }) => {
+      {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article key={node.fields.slug}>
@@ -119,11 +117,15 @@ export default MainPageTemplate
 export const pageQuery = graphql`
   query mainPageByCategory($category: String!) {
     site {
-        siteMetadata {
-          title
-        }
+      siteMetadata {
+        title
       }
-    allMarkdownRemark(filter: {frontmatter: {category: {eq: $category},type: {eq: "basic_page"}}}) {
+    }
+    allMarkdownRemark(
+      filter: {
+        frontmatter: { category: { eq: $category }, type: { eq: "basic_page" } }
+      }
+    ) {
       edges {
         node {
           id
