@@ -10,8 +10,8 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
-import { Jumbotron, Button, Container } from 'reactstrap';
-import Particles from "react-tsparticles";
+import { Jumbotron, Button, Container, Row, Col } from "reactstrap"
+import Particles from "react-tsparticles"
 
 const NavItem = styled(Link)`
   text-decoration: none;
@@ -106,8 +106,6 @@ const Bio = () => {
     }
   `)
 
-
-
   const { author, social } = data.site.siteMetadata
 
   return (
@@ -116,60 +114,38 @@ const Bio = () => {
         display: `block`,
         // marginBottom: rhythm(2.5),
         marginBottom: 0,
-        textAlign: "center",
+        // display:"inline",
+        // textAlign: "center",
       }}
     >
       <div>
-        <Jumbotron fluid style={{color: "#FFFFFF"}}>
-          <Container fluid>
-          <h1 className="display-3">Hello, world!</h1>
-          <p className="lead">
-            This is a simple hero unit, a simple Jumbotron-style component for
-            calling extra attention to featured content or information.
-          </p>
-          <hr className="my-2" />
-          <p>
-            It uses utility classes for typography and spacing to space content
-            out within the larger container.
-          </p>
-          <p className="lead">
-            <Button color="primary">Learn More</Button>
-          </p>
-          </Container>
-        </Jumbotron>
-      </div>
-
-      <Image
-        fixed={data.avatar.childImageSharp.fixed}
-        alt={author.name}
-        style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 300,
-          minHeight: 150,
-          // borderRadius: `100%`,
-        }}
-        imgStyle={{
-          borderRadius: `10%`,
-        }}
-      />
-      <div
-      //  style={{
-      //   marginBottom: rhythm(0.05),
-      // }}
-      >
-        <p>
-          {/* Written by */}
-          <strong>{author.name}</strong>
-
-          {/* <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
-        </a> */}
-        </p>
-        <p>{author.summary}</p>
-      </div>
-
-      <NavItem to={`${social.instagram}`}>
+        <Jumbotron fluid style={{ color: "#FFFFFF" }}>
+          <Container fluid style={{ display:"inline", color:"grey" }}>
+          <Row xs="2">
+          <Col style={{ maxWidth:"30%",margin:"auto auto" }}>
+            <Image
+              fixed={data.avatar.childImageSharp.fixed}
+              alt={author.name}
+              style={{
+                marginRight: rhythm(1 / 2),
+                marginBottom: 0,
+                minWidth: 300,
+                minHeight: 150,
+                // borderRadius: `100%`,
+              }}
+              imgStyle={{
+                borderRadius: `10%`,
+              }}
+            />
+          </Col>
+          <Col style={{ maxWidth: "70%",textAlign: "center",margin:"auto auto" }}>
+            <h1>{author.name}</h1>
+            <p className="lead">
+            {author.summary}
+            </p>
+            <hr className="my-2" />
+            <p className="lead">
+            <NavItem to={`${social.instagram}`}>
         <Image
           fixed={data.igicon.childImageSharp.fixed}
           alt={author.name}
@@ -240,6 +216,13 @@ const Bio = () => {
           }}
         />
       </NavItem>
+            </p>
+            </Col>
+            
+            </Row>
+          </Container>
+        </Jumbotron>
+      </div>
 
       <Particles
         id="tsparticles"
@@ -309,7 +292,7 @@ const Bio = () => {
               value: 80,
             },
             opacity: {
-              value: 0.5,
+              value: 0.3,
             },
             shape: {
               type: "circle",
@@ -321,11 +304,7 @@ const Bio = () => {
           },
           detectRetina: true,
         }}
-
-        
       />
-
-
     </div>
   )
 }
