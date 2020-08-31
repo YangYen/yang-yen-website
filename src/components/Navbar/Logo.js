@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 const LogoWrap = styled.div`
-  margin: auto 0;
+  margin: auto 1%;
   flex: 0 1 36px;
   box-shadow: none;
 

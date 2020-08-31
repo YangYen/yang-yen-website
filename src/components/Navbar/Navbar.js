@@ -42,6 +42,7 @@ const Toggle = styled.div`
 const Navbox = styled.div`
   display: flex;
   height: 100%;
+  margin: 0.5% 0;
   justify-content: flex-end;
   align-items: center;
 
@@ -96,6 +97,7 @@ const Navbar = () => {
   return (
     <Navigation>
       <Logo />
+      <h5 style={{margin:"auto auto"}}>Yang's BLOG</h5>
       <Toggle
         navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}

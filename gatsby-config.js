@@ -129,5 +129,11 @@ module.exports = {
     `gatsby-plugin-offline`,
     // `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `6902362466`,
+      },
+    },
   ],
 }

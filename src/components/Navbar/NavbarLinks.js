@@ -110,8 +110,8 @@ const NavbarLinks = () => {
             <header>
               <h3>
                 <UncontrolledButtonDropdown>
-                  <DropdownToggle style={{ opacity: 0.75 }} caret color="info">
-                    <NavItem to={"/"+branch}>{categoryname}</NavItem>
+                  <DropdownToggle style={{ opacity: 1 ,color:"#000000",backgroundColor:"#FFFFFF",borderStyle:"none"}} caret>
+                    <NavItem to={"/"+branch} style={{margin:"auto auto"}}>{categoryname}</NavItem>
                   </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem header>

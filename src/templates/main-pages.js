@@ -11,76 +11,20 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import Img from "gatsby-image"
+import { Container, Row, Col } from "reactstrap"
 
 const MainPageTemplate = ({ data, pageContext, location }) => {
   //   const post = data.markdownRemark
   const posts = data.allMarkdownRemark.edges
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
+  const instagramPosts = data.allInstaNode.edges
+  let fundamentalShow
+  let showPhoto
 
-  return (
-    <Layout location={location} title={siteTitle}>
-      {/* <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      /> */}
-      {/* <article>
-        <header>
-          <h1
-            style={{
-              marginTop: rhythm(1),
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-            }}
-          >
-            {post.frontmatter.date}
-          </p>
-        </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <footer>
-          <Bio />
-        </footer>
-      </article>
-
-      <nav>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav> */}
+  fundamentalShow = (
+    <div>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
@@ -105,11 +49,50 @@ const MainPageTemplate = ({ data, pageContext, location }) => {
                 }}
               />
             </section>
+            <div>{showPhoto}</div>
           </article>
         )
       })}
-    </Layout>
+    </div>
   )
+
+  showPhoto = (
+    <Container style={{ padding: "auto 0", maxWidth: "100%", margin: "1% 0" }}>
+      <Row xs="3">
+        {instagramPosts.map(({ node }) => {
+          const featuredImgFluid = node.localFile.childImageSharp.fluid
+
+          return (
+            <header>
+              <Col style={{ padding: "0 0" }}>
+                {<Img fluid={featuredImgFluid} style={{ height: 300 }} />}
+              </Col>
+            </header>
+          )
+        })}
+      </Row>
+    </Container>
+  )
+
+  if (
+    location.pathname === "/aboutphoto" ||
+    location.pathname === "/aboutphoto/"
+  ) {
+    return (
+      <Layout location={location} title={siteTitle}>
+        <div>
+          {fundamentalShow}
+          {showPhoto}
+        </div>
+      </Layout>
+    )
+  } else {
+    return (
+      <Layout location={location} title={siteTitle}>
+        <div>{fundamentalShow}</div>
+      </Layout>
+    )
+  }
 }
 
 export default MainPageTemplate
@@ -119,6 +102,21 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    allInstaNode(sort: { fields: timestamp, order: DESC }) {
+      edges {
+        node {
+          id
+          caption
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
       }
     }
     allMarkdownRemark(
