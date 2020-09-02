@@ -6,6 +6,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "../styles/global.css"
+import Clock from 'react-digital-clock';
 import {
   Button,
   Alert,
@@ -27,8 +28,14 @@ import {
 import Img from "gatsby-image"
 import styled from "styled-components"
 
+
+
 const CustomProgress = {
   margin:"0.7% 0"
+  
+};
+const badgeStyle = {
+  // maxWidth:"5%"
 };
 
 
@@ -38,18 +45,23 @@ const BlogIndex = ({ data, location }) => {
   const [visible, setVisible] = useState(true)
   const onDismiss = () => setVisible(false)
   const totalArticle = data.totalPageCount.totalCount
+  
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
       <hr></hr>
+      <h1 style={{margin:"5%"}}><Clock hour12= {false} /></h1>
       <div>
         <h5 style={{ textAlign: "center" }}>文章統計</h5>
 
         {/* TODO 動態生成數量統計 */}
         <div>
-          <Progress
+        <Container>
+        <Row xs="2">
+        <Col style={badgeStyle}><Badge color="secondary">{data.blogPageCount.totalCount}</Badge></Col>
+        <Col><Progress
             bar
             animated
             color="primary"
@@ -58,8 +70,10 @@ const BlogIndex = ({ data, location }) => {
             style={CustomProgress}
           >
             部落格
-          </Progress>
-          <Progress
+          </Progress></Col>
+          
+          <Col style={badgeStyle}><Badge color="secondary">{data.mePageCount.totalCount}</Badge></Col>
+          <Col><Progress
             bar
             animated
             color="dark"
@@ -68,8 +82,9 @@ const BlogIndex = ({ data, location }) => {
             style={CustomProgress}
           >
             關於作者
-          </Progress>
-          <Progress
+          </Progress></Col>
+          <Col style={badgeStyle}><Badge color="secondary">{data.musicPageCount.totalCount}</Badge></Col>
+          <Col><Progress
             bar
             animated
             color="success"
@@ -78,8 +93,9 @@ const BlogIndex = ({ data, location }) => {
             style={CustomProgress}
           >
             音樂
-          </Progress>
-          <Progress
+          </Progress></Col>
+          <Col style={badgeStyle}><Badge color="secondary">{data.photoPageCount.totalCount}</Badge></Col>
+          <Col><Progress
             bar
             animated
             color="info"
@@ -88,8 +104,9 @@ const BlogIndex = ({ data, location }) => {
             style={CustomProgress}
           >
             攝影
-          </Progress>
-          <Progress
+          </Progress></Col>
+          <Col style={badgeStyle}><Badge color="secondary">{data.sportPageCount.totalCount}</Badge></Col>
+          <Col><Progress
             bar
             animated
             color="warning"
@@ -98,8 +115,9 @@ const BlogIndex = ({ data, location }) => {
             style={CustomProgress}
           >
             運動
-          </Progress>
-          <Progress 
+          </Progress></Col>
+          <Col style={badgeStyle}><Badge color="secondary">{data.techPageCount.totalCount}</Badge></Col>
+          <Col><Progress 
             bar
             animated
             color="danger"
@@ -108,8 +126,9 @@ const BlogIndex = ({ data, location }) => {
             style={CustomProgress}
           >
             科技
-          </Progress>
-
+          </Progress></Col>
+          </Row>
+          </Container>
         </div>
         <hr></hr>
       </div>

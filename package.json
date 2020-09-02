@@ -27,11 +27,13 @@
     "gatsby-remark-smartypants": "^2.3.10",
     "gatsby-source-filesystem": "^2.3.24",
     "gatsby-source-instagram": "^0.8.0",
+    "gatsby-source-youtube-v2": "^1.0.1",
     "gatsby-transformer-remark": "^2.8.28",
     "gatsby-transformer-sharp": "^2.5.13",
     "prismjs": "^1.21.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
+    "react-digital-clock": "^0.1.2",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-tsparticles": "^1.17.10",
@@ -42,7 +44,8 @@
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
     "typography": "^0.16.19",
-    "typography-theme-wordpress-2016": "^0.16.19"
+    "typography-theme-wordpress-2016": "^0.16.19",
+    "youtube-playlist-info": "^1.1.2"
   },
   "devDependencies": {
     "prettier": "2.0.5"

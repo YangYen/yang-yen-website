@@ -20,8 +20,10 @@ const MainPageTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
   const instagramPosts = data.allInstaNode.edges
+  const youtubePosts = data.allYoutubeVideo.edges
   let fundamentalShow
   let showPhoto
+  let showYoutube
 
   fundamentalShow = (
     <div>
@@ -74,6 +76,16 @@ const MainPageTemplate = ({ data, pageContext, location }) => {
     </Container>
   )
 
+  showYoutube = (
+    <div>
+      {youtubePosts.map(({ node }) => {
+        const videoId = node.videoId
+        const url = 'https://www.youtube.com/embed/'+videoId
+        return <iframe src={url} width="70%" height="400"></iframe>
+      })}
+    </div>
+  )
+
   if (
     location.pathname === "/aboutphoto" ||
     location.pathname === "/aboutphoto/"
@@ -83,6 +95,18 @@ const MainPageTemplate = ({ data, pageContext, location }) => {
         <div>
           {fundamentalShow}
           {showPhoto}
+        </div>
+      </Layout>
+    )
+  } else if (
+    location.pathname === "/aboutmusic" ||
+    location.pathname === "/aboutmusic/"
+  ) {
+    return (
+      <Layout location={location} title={siteTitle}>
+        <div>
+          {fundamentalShow}
+          {showYoutube}
         </div>
       </Layout>
     )
@@ -102,6 +126,19 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    allYoutubeVideo {
+      edges {
+        node {
+          id
+          title
+          description
+          videoId
+          publishedAt
+          privacyStatus
+          channelTitle
+        }
       }
     }
     allInstaNode(sort: { fields: timestamp, order: DESC }) {
