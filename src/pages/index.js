@@ -1,12 +1,11 @@
-import React, { useState } from "react"
+import React ,{ useEffect, useState }from "react"
 import { Link, graphql } from "gatsby"
 import "bootstrap/dist/css/bootstrap.min.css"
-
+import Clock from 'react-live-clock';
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "../styles/global.css"
-import Clock from 'react-digital-clock';
 import {
   Button,
   Alert,
@@ -30,6 +29,7 @@ import styled from "styled-components"
 
 
 
+
 const CustomProgress = {
   margin:"0.7% 0"
   
@@ -39,12 +39,54 @@ const badgeStyle = {
 };
 
 
+
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
-  const [visible, setVisible] = useState(true)
-  const onDismiss = () => setVisible(false)
+  // const [visible, setVisible] = useState(true)
+  // const onDismiss = () => setVisible(false)
   const totalArticle = data.totalPageCount.totalCount
+  var ReactFitText = require('react-fittext');
+
+  const calculateTimeLeft = () => {
+    let year = new Date().getFullYear();
+    const difference = +new Date(`01/01/${year+1}`) - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  }
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [year] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+  });
+
+  const timerComponents = [];
+
+  Object.keys(timeLeft).forEach((interval) => {
+    if (!timeLeft[interval]) {
+      return;
+    }
+
+    timerComponents.push(
+      <span>
+        {timeLeft[interval]} {interval}{" "}
+      </span>
+    );
+  });
   
 
   return (
@@ -52,7 +94,16 @@ const BlogIndex = ({ data, location }) => {
       <SEO title="All posts" />
       <Bio />
       <hr></hr>
-      <h1 style={{margin:"5%"}}><Clock hour12= {false} /></h1>
+      <div>
+      <h1>HacktoberFest {year+1} Countdown</h1>
+      <h2>With React Hooks!</h2>
+      {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+    </div>
+      <ReactFitText compressor={20}>
+          <h1>
+            <Clock format="HH:mm:ss" interval={1000} ticking={true} />
+          </h1>
+        </ReactFitText>
       <div>
         <h5 style={{ textAlign: "center" }}>文章統計</h5>
 
