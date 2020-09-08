@@ -145,9 +145,10 @@ const Layout = ({ location, title, children, pageInfo }) => {
           <Container style={{ marginBottom: "5%" }}>
             <Row xs="4">
               <Col>
-                <span href="https://www.gatsbyjs.com" id="UncontrolledTooltipExample1" >
+                <span  id="UncontrolledTooltipExample1" >
                   {" "}
-                  <button
+                  <button 
+                  
                     style={{
                       borderStyle: "none",
                       backgroundColor: "white",
@@ -155,10 +156,12 @@ const Layout = ({ location, title, children, pageInfo }) => {
                       width: "100%",
                     }}
                   >
+                    <a href="https://www.gatsbyjs.com">
                     <Image
                       fluid={data.gatsbyjs.childImageSharp.fluid}
                       style={footerIcon}
                     />
+                    </a>
                   </button>
                 </span>
                 <UncontrolledTooltip
@@ -167,10 +170,12 @@ const Layout = ({ location, title, children, pageInfo }) => {
                   style={{ textAlign: "left", margin: "auto 4%" }}
                   
                 >
+                  
                   <Image
                       fluid={data.gatsbyjs.childImageSharp.fluid}
                       style={footerIcon}
                     />
+                   
                   Gatsby is a React-based open source framework for creating
                   websites and apps. Build anything you can imagine with over
                   2000 plugins and performance, scalability, and security
@@ -178,7 +183,7 @@ const Layout = ({ location, title, children, pageInfo }) => {
                 </UncontrolledTooltip>
               </Col>
               <Col>
-                <span href="https://graphql.org" id="UncontrolledTooltipExample2">
+                <span  id="UncontrolledTooltipExample2">
                   {" "}
                   <button
                     style={{
@@ -188,10 +193,12 @@ const Layout = ({ location, title, children, pageInfo }) => {
                       width: "100%",
                     }}
                   >
+                    <a href="https://graphql.org">
                     <Image
                       fluid={data.graphql.childImageSharp.fluid}
                       style={footerIcon}
                     />
+                    </a>
                   </button>
                 </span>
                 <UncontrolledTooltip
@@ -199,10 +206,12 @@ const Layout = ({ location, title, children, pageInfo }) => {
                   target="UncontrolledTooltipExample2"
                   style={{ textAlign: "left", margin: "auto 4%" }}
                 >
+                 
                   <Image
                       fluid={data.graphql.childImageSharp.fluid}
                       style={footerIcon}
                     />
+                    
                   GraphQL is a query language for APIs and a runtime for
                   fulfilling those queries with your existing data. GraphQL
                   provides a complete and understandable description of the data
@@ -212,7 +221,7 @@ const Layout = ({ location, title, children, pageInfo }) => {
                 </UncontrolledTooltip>
               </Col>
               <Col>
-                <span href="https://www.netlify.com" id="UncontrolledTooltipExample">
+                <span  id="UncontrolledTooltipExample">
                   {" "}
                   <button
                     style={{
@@ -222,10 +231,12 @@ const Layout = ({ location, title, children, pageInfo }) => {
                       width: "100%",
                     }}
                   >
+                    <a href="https://www.netlify.com">
                     <Image
                       fluid={data.netlify.childImageSharp.fluid}
                       style={footerIcon}
                     />
+                    </a>
                   </button>
                 </span>
                 <UncontrolledTooltip
@@ -252,12 +263,14 @@ const Layout = ({ location, title, children, pageInfo }) => {
                       height: "100%",
                       width: "100%",
                     }}
-                    href="https://reactjs.org"
+                  
                   >
+                    <a href="https://reactjs.org">
                     <Image
                       fluid={data.react.childImageSharp.fluid}
                       style={footerIcon}
                     />
+                    </a>
                   </button>
                 </span>
                 <UncontrolledTooltip
