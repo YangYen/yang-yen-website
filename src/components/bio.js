@@ -113,112 +113,115 @@ const Bio = () => {
       style={{
         display: `block`,
         // marginBottom: rhythm(2.5),
-        margin:"2% 0"
+        margin: "2% 0",
         // display:"inline",
         // textAlign: "center",
       }}
     >
       <div>
         <Jumbotron fluid style={{ color: "#FFFFFF" }}>
-          <Container fluid style={{ display:"inline", color:"grey" }}>
-          <Row xs="2">
-          <Col style={{ maxWidth:"30%",margin:"auto auto" }}>
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author.name}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 300,
-                minHeight: 150,
-                // borderRadius: `100%`,
-              }}
-              imgStyle={{
-                borderRadius: `10%`,
-              }}
-            />
-          </Col>
-          <Col style={{ maxWidth: "70%",textAlign: "center",margin:"auto auto" }}>
-            <h1>{author.name}</h1>
-            <p className="lead">
-            {author.summary}
-            </p>
-            <hr className="my-2" />
-            <p className="lead">
-            <NavItem to={`${social.instagram}`}>
-        <Image
-          fixed={data.igicon.childImageSharp.fixed}
-          alt={author.name}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginLeft: rhythm(1 / 2),
-            marginBottom: 0,
-            marginTop: rhythm(1.5),
-            // minWidth: 50,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
-        />
-      </NavItem>
+          <Container fluid style={{ display: "inline", color: "grey" }}>
+            <Row xs="2">
+              <Col style={{ maxWidth: "30%", margin: "auto auto" }}>
+                <Image
+                  fixed={data.avatar.childImageSharp.fixed}
+                  alt={author.name}
+                  style={{
+                    marginRight: rhythm(1 / 2),
+                    marginBottom: 0,
+                    minWidth: 300,
+                    minHeight: 150,
+                    // borderRadius: `100%`,
+                  }}
+                  imgStyle={{
+                    borderRadius: `10%`,
+                  }}
+                />
+              </Col>
+              <Col
+                style={{
+                  maxWidth: "70%",
+                  textAlign: "center",
+                  margin: "auto auto",
+                }}
+              >
+                <h1>{author.name}</h1>
+                <p className="lead">{author.summary}</p>
+                <hr className="my-2" />
+                <p className="lead">
+                  <NavItem to={`${social.instagram}`}>
+                    <Image
+                      fixed={data.igicon.childImageSharp.fixed}
+                      alt={author.name}
+                      style={{
+                        marginRight: rhythm(1 / 2),
+                        marginLeft: rhythm(1 / 2),
+                        marginBottom: 0,
+                        marginTop: rhythm(1.5),
+                        // minWidth: 50,
+                        borderRadius: `100%`,
+                      }}
+                      imgStyle={{
+                        borderRadius: `50%`,
+                      }}
+                    />
+                  </NavItem>
 
-      <NavItem to={`${social.github}`}>
-        <Image
-          fixed={data.githubicon.childImageSharp.fixed}
-          alt={author.name}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginLeft: rhythm(1 / 2),
-            marginBottom: 0,
-            marginTop: rhythm(1.5),
-            // minWidth: 50,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
-        />
-      </NavItem>
+                  <NavItem to={`${social.github}`}>
+                    <Image
+                      fixed={data.githubicon.childImageSharp.fixed}
+                      alt={author.name}
+                      style={{
+                        marginRight: rhythm(1 / 2),
+                        marginLeft: rhythm(1 / 2),
+                        marginBottom: 0,
+                        marginTop: rhythm(1.5),
+                        // minWidth: 50,
+                        borderRadius: `100%`,
+                      }}
+                      imgStyle={{
+                        borderRadius: `50%`,
+                      }}
+                    />
+                  </NavItem>
 
-      <NavItem to={`${social.linkedin}`}>
-        <Image
-          fixed={data.linkedinicon.childImageSharp.fixed}
-          alt={author.name}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginLeft: rhythm(1 / 2),
-            marginBottom: 0,
-            marginTop: rhythm(1.5),
-            // minWidth: 50,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
-        />
-      </NavItem>
+                  <NavItem to={`${social.linkedin}`}>
+                    <Image
+                      fixed={data.linkedinicon.childImageSharp.fixed}
+                      alt={author.name}
+                      style={{
+                        marginRight: rhythm(1 / 2),
+                        marginLeft: rhythm(1 / 2),
+                        marginBottom: 0,
+                        marginTop: rhythm(1.5),
+                        // minWidth: 50,
+                        borderRadius: `100%`,
+                      }}
+                      imgStyle={{
+                        borderRadius: `50%`,
+                      }}
+                    />
+                  </NavItem>
 
-      <NavItem to={`${social.youtube}`}>
-        <Image
-          fixed={data.youtubeicon.childImageSharp.fixed}
-          alt={author.name}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginLeft: rhythm(1 / 2),
-            marginBottom: 0,
-            marginTop: rhythm(1.5),
-            // minWidth: 50,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
-        />
-      </NavItem>
-            </p>
-            </Col>
-            
+                  <NavItem to={`${social.youtube}`}>
+                    <Image
+                      fixed={data.youtubeicon.childImageSharp.fixed}
+                      alt={author.name}
+                      style={{
+                        marginRight: rhythm(1 / 2),
+                        marginLeft: rhythm(1 / 2),
+                        marginBottom: 0,
+                        marginTop: rhythm(1.5),
+                        // minWidth: 50,
+                        borderRadius: `100%`,
+                      }}
+                      imgStyle={{
+                        borderRadius: `50%`,
+                      }}
+                    />
+                  </NavItem>
+                </p>
+              </Col>
             </Row>
           </Container>
         </Jumbotron>

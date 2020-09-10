@@ -1,7 +1,7 @@
-import React ,{ useEffect, useState }from "react"
+import React, { useEffect, useState } from "react"
 import { Link, graphql } from "gatsby"
 import "bootstrap/dist/css/bootstrap.min.css"
-import Clock from 'react-live-clock';
+import Clock from "react-live-clock"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -27,18 +27,12 @@ import {
 import Img from "gatsby-image"
 import styled from "styled-components"
 
-
-
-
 const CustomProgress = {
-  margin:"0.7% 0"
-  
-};
+  margin: "0.7% 0",
+}
 const badgeStyle = {
   // maxWidth:"5%"
-};
-
-
+}
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -46,12 +40,12 @@ const BlogIndex = ({ data, location }) => {
   // const [visible, setVisible] = useState(true)
   // const onDismiss = () => setVisible(false)
   const totalArticle = data.totalPageCount.totalCount
-  var ReactFitText = require('react-fittext');
+  var ReactFitText = require("react-fittext")
 
   const calculateTimeLeft = () => {
-    let year = new Date().getFullYear();
-    const difference = +new Date(`01/01/${year+1}`) - +new Date();
-    let timeLeft = {};
+    let year = new Date().getFullYear()
+    const difference = +new Date(`01/01/${year + 1}`) - +new Date()
+    let timeLeft = {}
 
     if (difference > 0) {
       timeLeft = {
@@ -59,35 +53,34 @@ const BlogIndex = ({ data, location }) => {
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60),
-      };
+      }
     }
 
-    return timeLeft;
+    return timeLeft
   }
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  const [year] = useState(new Date().getFullYear());
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
+  const [year] = useState(new Date().getFullYear())
 
   useEffect(() => {
     setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-  });
+      setTimeLeft(calculateTimeLeft())
+    }, 1000)
+  })
 
-  const timerComponents = [];
+  const timerComponents = []
 
-  Object.keys(timeLeft).forEach((interval) => {
+  Object.keys(timeLeft).forEach(interval => {
     if (!timeLeft[interval]) {
-      return;
+      return
     }
 
     timerComponents.push(
       <span>
         {timeLeft[interval]} {interval}{" "}
       </span>
-    );
-  });
-  
+    )
+  })
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -95,97 +88,129 @@ const BlogIndex = ({ data, location }) => {
       <Bio />
       <hr></hr>
       <div>
-      <h1>HacktoberFest {year+1} Countdown</h1>
-      <h2>With React Hooks!</h2>
-      {timerComponents.length ? timerComponents : <span>Time's up!</span>}
-    </div>
+        <h1>HacktoberFest {year + 1} Countdown</h1>
+        <h2>With React Hooks!</h2>
+        {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+      </div>
       <ReactFitText compressor={20}>
-          <h1>
-            <Clock format="HH:mm:ss" interval={1000} ticking={true} />
-          </h1>
-        </ReactFitText>
+        <h1>
+          <Clock format="HH:mm:ss" interval={1000} ticking={true} />
+        </h1>
+      </ReactFitText>
       <div>
         <h5 style={{ textAlign: "center" }}>文章統計</h5>
 
         {/* TODO 動態生成數量統計 */}
         <div>
-        <Container>
-        <Row xs="2">
-        <Col style={badgeStyle}><Badge color="secondary">{data.blogPageCount.totalCount}</Badge></Col>
-        <Col><Progress
-            bar
-            animated
-            color="primary"
-            value={data.blogPageCount.totalCount}
-            max={totalArticle / 4}
-            style={CustomProgress}
-          >
-            部落格
-          </Progress></Col>
-          
-          <Col style={badgeStyle}><Badge color="secondary">{data.mePageCount.totalCount}</Badge></Col>
-          <Col><Progress
-            bar
-            animated
-            color="dark"
-            value={data.mePageCount.totalCount}
-            max={totalArticle / 4}
-            style={CustomProgress}
-          >
-            關於作者
-          </Progress></Col>
-          <Col style={badgeStyle}><Badge color="secondary">{data.musicPageCount.totalCount}</Badge></Col>
-          <Col><Progress
-            bar
-            animated
-            color="success"
-            value={data.musicPageCount.totalCount}
-            max={totalArticle / 4}
-            style={CustomProgress}
-          >
-            音樂
-          </Progress></Col>
-          <Col style={badgeStyle}><Badge color="secondary">{data.photoPageCount.totalCount}</Badge></Col>
-          <Col><Progress
-            bar
-            animated
-            color="info"
-            value={data.photoPageCount.totalCount}
-            max={totalArticle / 4}
-            style={CustomProgress}
-          >
-            攝影
-          </Progress></Col>
-          <Col style={badgeStyle}><Badge color="secondary">{data.sportPageCount.totalCount}</Badge></Col>
-          <Col><Progress
-            bar
-            animated
-            color="warning"
-            value={data.sportPageCount.totalCount}
-            max={totalArticle / 4}
-            style={CustomProgress}
-          >
-            運動
-          </Progress></Col>
-          <Col style={badgeStyle}><Badge color="secondary">{data.techPageCount.totalCount}</Badge></Col>
-          <Col><Progress 
-            bar
-            animated
-            color="danger"
-            value={data.techPageCount.totalCount}
-            max={totalArticle / 4}
-            style={CustomProgress}
-          >
-            科技
-          </Progress></Col>
-          </Row>
+          <Container>
+            <Row xs="2">
+              <Col style={badgeStyle}>
+                <Badge color="secondary">{data.blogPageCount.totalCount}</Badge>
+              </Col>
+              <Col>
+                <Progress
+                  bar
+                  animated
+                  color="primary"
+                  value={data.blogPageCount.totalCount}
+                  max={totalArticle / 4}
+                  style={CustomProgress}
+                >
+                  部落格
+                </Progress>
+              </Col>
+
+              <Col style={badgeStyle}>
+                <Badge color="secondary">{data.mePageCount.totalCount}</Badge>
+              </Col>
+              <Col>
+                <Progress
+                  bar
+                  animated
+                  color="dark"
+                  value={data.mePageCount.totalCount}
+                  max={totalArticle / 4}
+                  style={CustomProgress}
+                >
+                  關於作者
+                </Progress>
+              </Col>
+              <Col style={badgeStyle}>
+                <Badge color="secondary">
+                  {data.musicPageCount.totalCount}
+                </Badge>
+              </Col>
+              <Col>
+                <Progress
+                  bar
+                  animated
+                  color="success"
+                  value={data.musicPageCount.totalCount}
+                  max={totalArticle / 4}
+                  style={CustomProgress}
+                >
+                  音樂
+                </Progress>
+              </Col>
+              <Col style={badgeStyle}>
+                <Badge color="secondary">
+                  {data.photoPageCount.totalCount}
+                </Badge>
+              </Col>
+              <Col>
+                <Progress
+                  bar
+                  animated
+                  color="info"
+                  value={data.photoPageCount.totalCount}
+                  max={totalArticle / 4}
+                  style={CustomProgress}
+                >
+                  攝影
+                </Progress>
+              </Col>
+              <Col style={badgeStyle}>
+                <Badge color="secondary">
+                  {data.sportPageCount.totalCount}
+                </Badge>
+              </Col>
+              <Col>
+                <Progress
+                  bar
+                  animated
+                  color="warning"
+                  value={data.sportPageCount.totalCount}
+                  max={totalArticle / 4}
+                  style={CustomProgress}
+                >
+                  運動
+                </Progress>
+              </Col>
+              <Col style={badgeStyle}>
+                <Badge color="secondary">{data.techPageCount.totalCount}</Badge>
+              </Col>
+              <Col>
+                <Progress
+                  bar
+                  animated
+                  color="danger"
+                  value={data.techPageCount.totalCount}
+                  max={totalArticle / 4}
+                  style={CustomProgress}
+                >
+                  科技
+                </Progress>
+              </Col>
+            </Row>
           </Container>
         </div>
         <hr></hr>
       </div>
 
-      <Container style={{padding:"auto 0", maxWidth:"100%", margin:"auto 0"}}>
-        <Row xs="3"  >
+      <Container
+        style={{ padding: "auto 0", maxWidth: "100%", margin: "auto 0" }}
+      >
+        <Row xs="3">
           {/* <CardDeck> */}
           {posts.map(({ node }) => {
             const title = node.frontmatter.branch
@@ -198,7 +223,7 @@ const BlogIndex = ({ data, location }) => {
               <article key={title}>
                 <header>
                   {
-                    <Col style={{padding:"0 0"}}>
+                    <Col style={{ padding: "0 0" }}>
                       {/* <Button outline color="secondary"> */}
                       <Link style={{ boxShadow: `none` }} to={title}>
                         <Card inverse style={{ textAlign: "center" }}>
