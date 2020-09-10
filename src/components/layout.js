@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link, useStaticQuery } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby" 
 import Navbar from "./Navbar/Navbar"
 import { rhythm, scale } from "../utils/typography"
 import Image from "gatsby-image"
