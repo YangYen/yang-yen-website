@@ -127,12 +127,25 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
-    // `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-instagram`,
       options: {
         username: `6902362466`,
+      },
+    },
+    {
+      resolve: `gatsby-source-youtube-v2`,
+      options: {
+        channelId: ['UC3ZfsIHLYW_A7RTL0CSpe2Q'],
+        apiKey: 'AIzaSyD36yiLiOyBYGZ3-5lcKZ_1oKqv2ONFAeQ',
+        maxVideos: 50 // Defaults to 50
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-responsive-iframe`],
       },
     },
   ],
