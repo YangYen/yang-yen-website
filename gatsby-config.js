@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: `Yang Yen's Blog`,
-    // author: {
-    //   name: `Yang Yen 晏陽`,
-    //   summary: `一個喜歡運動和音樂的菜鳥工程師`,
-    // },
+    author: {
+      name: `Yang Yen 晏陽`,
+      summary: `一個喜歡運動和音樂的菜鳥工程師`,
+    },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {

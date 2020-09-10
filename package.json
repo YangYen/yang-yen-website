@@ -3,7 +3,10 @@
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
   "version": "0.1.0",
-  
+  "author": {
+    "name": "Yang Yen 晏陽",
+    "summary": "一個喜歡運動和音樂的菜鳥工程師"
+  },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
