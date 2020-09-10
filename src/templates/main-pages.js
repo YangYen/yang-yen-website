@@ -77,11 +77,11 @@ const MainPageTemplate = ({ data, pageContext, location }) => {
   )
 
   showYoutube = (
-    <div>
+    <div style={{margin:"0 auto", display:"block"}}>
       {youtubePosts.map(({ node }) => {
         const videoId = node.videoId
         const url = 'https://www.youtube.com/embed/'+videoId
-        return <iframe src={url} width="70%" height="400"></iframe>
+        return <iframe src={url} width="100%" height="600" allowfullscreen="true"></iframe>
       })}
     </div>
   )
