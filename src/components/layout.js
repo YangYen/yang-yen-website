@@ -39,39 +39,39 @@ const footerIcon = {
 }
 
 const Layout = ({ location, title, children, pageInfo }) => {
-  // const data = useStaticQuery(
-  //   graphql`
-  //   query {
-  //     gatsbyjs: file(absolutePath: { regex: "/gatsbyjs.png/" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 800) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //     graphql: file(absolutePath: { regex: "/graphql.png/" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 800) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //     netlify: file(absolutePath: { regex: "/netlify.png/" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 800) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //     react: file(absolutePath: { regex: "/react.png/" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 800) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const data = useStaticQuery(
+    graphql`
+    query {
+      gatsbyjs: file(absolutePath: { regex: "/gatsbyjs.png/" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      graphql: file(absolutePath: { regex: "/graphql.png/" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      netlify: file(absolutePath: { regex: "/netlify.png/" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      react: file(absolutePath: { regex: "/react.png/" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
 
   const rootPath = `${__PATH_PREFIX__}/`
   // let header
@@ -157,10 +157,10 @@ const Layout = ({ location, title, children, pageInfo }) => {
                     }}
                   >
                     <a href="https://www.gatsbyjs.com">
-                      {/* <Image
+                      <Image
                         fluid={data.gatsbyjs.childImageSharp.fluid}
                         style={footerIcon}
-                      /> */}
+                      />
                     </a>
                   </button>
                 </span>
@@ -169,10 +169,10 @@ const Layout = ({ location, title, children, pageInfo }) => {
                   target="UncontrolledTooltipExample1"
                   style={{ textAlign: "left", margin: "auto 4%" }}
                 >
-                  {/* <Image
+                  <Image
                     fluid={data.gatsbyjs.childImageSharp.fluid}
                     style={footerIcon}
-                  /> */}
+                  />
                   Gatsby is a React-based open source framework for creating
                   websites and apps. Build anything you can imagine with over
                   2000 plugins and performance, scalability, and security
@@ -191,10 +191,10 @@ const Layout = ({ location, title, children, pageInfo }) => {
                     }}
                   >
                     <a href="https://graphql.org">
-                      {/* <Image
+                      <Image
                         fluid={data.graphql.childImageSharp.fluid}
                         style={footerIcon}
-                      /> */}
+                      />
                     </a>
                   </button>
                 </span>
@@ -203,10 +203,10 @@ const Layout = ({ location, title, children, pageInfo }) => {
                   target="UncontrolledTooltipExample2"
                   style={{ textAlign: "left", margin: "auto 4%" }}
                 >
-                  {/* <Image
+                  <Image
                     fluid={data.graphql.childImageSharp.fluid}
                     style={footerIcon}
-                  /> */}
+                  />
                   GraphQL is a query language for APIs and a runtime for
                   fulfilling those queries with your existing data. GraphQL
                   provides a complete and understandable description of the data
@@ -227,10 +227,10 @@ const Layout = ({ location, title, children, pageInfo }) => {
                     }}
                   >
                     <a href="https://www.netlify.com">
-                      {/* <Image
+                      <Image
                         fluid={data.netlify.childImageSharp.fluid}
                         style={footerIcon}
-                      /> */}
+                      />
                     </a>
                   </button>
                 </span>
@@ -239,10 +239,10 @@ const Layout = ({ location, title, children, pageInfo }) => {
                   target="UncontrolledTooltipExample"
                   style={{ textAlign: "left", margin: "auto 4%" }}
                 >
-                  {/* <Image
+                  <Image
                     fluid={data.netlify.childImageSharp.fluid}
                     style={footerIcon}
-                  /> */}
+                  />
                   Netlify is a San Francisco-based cloud computing[6] company
                   that offers hosting and serverless backend services for web
                   applications and static websites.
@@ -260,10 +260,10 @@ const Layout = ({ location, title, children, pageInfo }) => {
                     }}
                   >
                     <a href="https://reactjs.org">
-                      {/* <Image
+                      <Image
                         fluid={data.react.childImageSharp.fluid}
                         style={footerIcon}
-                      /> */}
+                      />
                     </a>
                   </button>
                 </span>
@@ -272,10 +272,10 @@ const Layout = ({ location, title, children, pageInfo }) => {
                   target="UncontrolledTooltipExample44"
                   style={{ textAlign: "left", margin: "auto 4%" }}
                 >
-                  {/* <Image
+                  <Image
                     fluid={data.react.childImageSharp.fluid}
                     style={footerIcon}
-                  /> */}
+                  />
                   React (also known as React.js or ReactJS) is an open-source
                   JavaScript library[3] for building user interfaces or UI
                   components. It is maintained by Facebook and a community of

@@ -51,62 +51,114 @@ const NavItem = styled(Link)`
 `
 
 const Bio = () => {
+  // const data = useStaticQuery(graphql`
+  //   query BioQuery {
+  //     avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
+  //       childImageSharp {
+  //         fixed(pngQuality: 100) {
+  //           ...GatsbyImageSharpFixed
+  //         }
+  //       }
+  //     }
+  //     igicon: file(absolutePath: { regex: "/instagram-icon.png/" }) {
+  //       childImageSharp {
+  //         fixed(width: 60, height: 60, pngQuality: 100) {
+  //           ...GatsbyImageSharpFixed
+  //         }
+  //       }
+  //     }
+  //     githubicon: file(absolutePath: { regex: "/github-icon.png/" }) {
+  //       childImageSharp {
+  //         fixed(width: 60, height: 60, pngQuality: 100) {
+  //           ...GatsbyImageSharpFixed
+  //         }
+  //       }
+  //     }
+  //     linkedinicon: file(absolutePath: { regex: "/linkedin-icon.png/" }) {
+  //       childImageSharp {
+  //         fixed(width: 60, height: 60, pngQuality: 100) {
+  //           ...GatsbyImageSharpFixed
+  //         }
+  //       }
+  //     }
+  //     youtubeicon: file(absolutePath: { regex: "/youtube-icon.png/" }) {
+  //       childImageSharp {
+  //         fixed(width: 60, height: 60, pngQuality: 100) {
+  //           ...GatsbyImageSharpFixed
+  //         }
+  //       }
+  //     }
+  //     site {
+  //       siteMetadata {
+  //         author {
+  //           name
+  //           summary
+  //         }
+  //         social {
+  //           twitter
+  //           instagram
+  //           github
+  //           linkedin
+  //           youtube
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+
   const data = useStaticQuery(graphql`
-    query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
-        childImageSharp {
-          fixed(pngQuality: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      igicon: file(absolutePath: { regex: "/instagram-icon.png/" }) {
-        childImageSharp {
-          fixed(width: 60, height: 60, pngQuality: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      githubicon: file(absolutePath: { regex: "/github-icon.png/" }) {
-        childImageSharp {
-          fixed(width: 60, height: 60, pngQuality: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      linkedinicon: file(absolutePath: { regex: "/linkedin-icon.png/" }) {
-        childImageSharp {
-          fixed(width: 60, height: 60, pngQuality: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      youtubeicon: file(absolutePath: { regex: "/youtube-icon.png/" }) {
-        childImageSharp {
-          fixed(width: 60, height: 60, pngQuality: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      site {
-        siteMetadata {
-          author {
-            name
-            summary
-          }
-          social {
-            twitter
-            instagram
-            github
-            linkedin
-            youtube
-          }
+  query BioQuery {
+    avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
+      childImageSharp {
+        fixed(pngQuality: 100) {
+          ...GatsbyImageSharpFixed
         }
       }
     }
-  `)
+    igicon: file(absolutePath: { regex: "/instagram-icon.png/" }) {
+      childImageSharp {
+        fixed(width: 60, height: 60, pngQuality: 100) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    githubicon: file(absolutePath: { regex: "/github-icon.png/" }) {
+      childImageSharp {
+        fixed(width: 60, height: 60, pngQuality: 100) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    linkedinicon: file(absolutePath: { regex: "/linkedin-icon.png/" }) {
+      childImageSharp {
+        fixed(width: 60, height: 60, pngQuality: 100) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    youtubeicon: file(absolutePath: { regex: "/youtube-icon.png/" }) {
+      childImageSharp {
+        fixed(width: 60, height: 60, pngQuality: 100) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        social {
+          twitter
+          instagram
+          github
+          linkedin
+          youtube
+        }
+      }
+    }
+  }
+`)
 
-  const { author, social } = data.site.siteMetadata
+  // const { author, social } = data.site.siteMetadata
+  const {  social } = data.site.siteMetadata
 
   return (
     <div
@@ -125,7 +177,7 @@ const Bio = () => {
               <Col style={{ maxWidth: "30%", margin: "auto auto" }}>
                 <Image
                   fixed={data.avatar.childImageSharp.fixed}
-                  alt={author.name}
+                  // alt={author.name}
                   style={{
                     marginRight: rhythm(1 / 2),
                     marginBottom: 0,
@@ -145,14 +197,14 @@ const Bio = () => {
                   margin: "auto auto",
                 }}
               >
-                <h1>{author.name}</h1>
-                <p className="lead">{author.summary}</p>
+                {/* <h1>{author.name}</h1> */}
+                {/* <p className="lead">{author.summary}</p> */}
                 <hr className="my-2" />
                 <p className="lead">
                   <NavItem to={`${social.instagram}`}>
                     <Image
                       fixed={data.igicon.childImageSharp.fixed}
-                      alt={author.name}
+                      // alt={author.name}
                       style={{
                         marginRight: rhythm(1 / 2),
                         marginLeft: rhythm(1 / 2),
@@ -170,7 +222,7 @@ const Bio = () => {
                   <NavItem to={`${social.github}`}>
                     <Image
                       fixed={data.githubicon.childImageSharp.fixed}
-                      alt={author.name}
+                      // alt={author.name}
                       style={{
                         marginRight: rhythm(1 / 2),
                         marginLeft: rhythm(1 / 2),
@@ -188,7 +240,7 @@ const Bio = () => {
                   <NavItem to={`${social.linkedin}`}>
                     <Image
                       fixed={data.linkedinicon.childImageSharp.fixed}
-                      alt={author.name}
+                      // alt={author.name}
                       style={{
                         marginRight: rhythm(1 / 2),
                         marginLeft: rhythm(1 / 2),
@@ -206,7 +258,7 @@ const Bio = () => {
                   <NavItem to={`${social.youtube}`}>
                     <Image
                       fixed={data.youtubeicon.childImageSharp.fixed}
-                      alt={author.name}
+                      // alt={author.name}
                       style={{
                         marginRight: rhythm(1 / 2),
                         marginLeft: rhythm(1 / 2),
