@@ -40,47 +40,47 @@ const BlogIndex = ({ data, location }) => {
   // const [visible, setVisible] = useState(true)
   // const onDismiss = () => setVisible(false)
   const totalArticle = data.totalPageCount.totalCount
-  var ReactFitText = require("react-fittext")
+  // var ReactFitText = require("react-fittext")
 
-  const calculateTimeLeft = () => {
-    let year = new Date().getFullYear()
-    const difference = +new Date(`01/01/${year + 1}`) - +new Date()
-    let timeLeft = {}
+  // const calculateTimeLeft = () => {
+  //   let year = new Date().getFullYear()
+  //   const difference = +new Date(`01/01/${year + 1}`) - +new Date()
+  //   let timeLeft = {}
 
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      }
-    }
+  //   if (difference > 0) {
+  //     timeLeft = {
+  //       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+  //       hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+  //       minutes: Math.floor((difference / 1000 / 60) % 60),
+  //       seconds: Math.floor((difference / 1000) % 60),
+  //     }
+  //   }
 
-    return timeLeft
-  }
+  //   return timeLeft
+  // }
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
-  const [year] = useState(new Date().getFullYear())
+  // const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
+  // const [year] = useState(new Date().getFullYear())
 
-  useEffect(() => {
-    setTimeout(() => {
-      setTimeLeft(calculateTimeLeft())
-    }, 1000)
-  })
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setTimeLeft(calculateTimeLeft())
+  //   }, 1000)
+  // })
 
-  const timerComponents = []
+  // const timerComponents = []
 
-  Object.keys(timeLeft).forEach(interval => {
-    if (!timeLeft[interval]) {
-      return
-    }
+  // Object.keys(timeLeft).forEach(interval => {
+  //   if (!timeLeft[interval]) {
+  //     return
+  //   }
 
-    timerComponents.push(
-      <span>
-        {timeLeft[interval]} {interval}{" "}
-      </span>
-    )
-  })
+  //   timerComponents.push(
+  //     <span>
+  //       {timeLeft[interval]} {interval}{" "}
+  //     </span>
+  //   )
+  // })
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -92,11 +92,11 @@ const BlogIndex = ({ data, location }) => {
         <h2>With React Hooks!</h2>
         {timerComponents.length ? timerComponents : <span>Time's up!</span>}
       </div>
-      <ReactFitText compressor={20}>
+      {/* <ReactFitText compressor={20}> */}
         <h1>
-          <Clock format="HH:mm:ss" interval={1000} ticking={true} />
+          {/* <Clock format="HH:mm:ss" interval={1000} ticking={true} /> */}
         </h1>
-      </ReactFitText>
+      {/* </ReactFitText> */}
       <div>
         <h5 style={{ textAlign: "center" }}>文章統計</h5>
 
