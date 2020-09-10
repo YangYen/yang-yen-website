@@ -14,13 +14,13 @@ module.exports = {
       linkedin: `https://www.linkedin.com/in/陽-晏-04072b106/`,
       youtube: `https://www.youtube.com/channel/UC3ZfsIHLYW_A7RTL0CSpe2Q`,
     },
-    // mainPages: {
-    //   aboutMe: `aboutMe`,
-    //   aboutSport: `aboutSport`,
-    //   aboutMusic: `aboutMusic`,
-    //   aboutTech: `aboutTech`,
-    //   aboutPhoto: `aboutPhoto`,
-    // },
+    mainPages: {
+      aboutMe: `aboutMe`,
+      aboutSport: `aboutSport`,
+      aboutMusic: `aboutMusic`,
+      aboutTech: `aboutTech`,
+      aboutPhoto: `aboutPhoto`,
+    },
   },
   plugins: [
     {
