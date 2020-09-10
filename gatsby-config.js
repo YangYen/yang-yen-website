@@ -148,15 +148,8 @@ module.exports = {
       options: {
         plugins: [`gatsby-remark-responsive-iframe`],
       },
-    },
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: /assets/ 
-        }
-      }
     }
+
 
   ],
 }
