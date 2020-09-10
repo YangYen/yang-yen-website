@@ -88,9 +88,9 @@ const BlogIndex = ({ data, location }) => {
       <Bio />
       <hr></hr>
       <div>
-        {/* <h1>HacktoberFest {year + 1} Countdown</h1> */}
+        <h1>HacktoberFest {year + 1} Countdown</h1>
         <h2>With React Hooks!</h2>
-        {/* {timerComponents.length ? timerComponents : <span>Time's up!</span>} */}
+        {timerComponents.length ? timerComponents : <span>Time's up!</span>}
       </div>
       {/* <ReactFitText compressor={20}> */}
         <h1>
