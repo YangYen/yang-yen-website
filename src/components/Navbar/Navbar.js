@@ -4,6 +4,49 @@ import React, { useState } from "react"
 import NavbarLinks from "./NavbarLinks"
 import Logo from "./Logo"
 import styled from "styled-components"
+import {Link} from "gatsby"
+import NavItem from "./NavbarLinks"
+
+const Title = styled(Link)`
+  text-decoration: none;
+  color: #111;
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 1vw;
+  margin-top: 30px;
+  transition: all 200ms ease-in;
+  position: relative;
+  box-shadow: none;
+
+  :after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0%;
+    content: ".";
+    color: transparent;
+    background: goldenrod;
+    height: 1px;
+    transition: all 0.4s ease-in;
+  }
+
+  :hover {
+    color: goldenrod;
+    text-decoration: none;
+    opacity: 1;
+    ::after {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 0;
+    font-size: 1.5rem;
+    z-index: 6;
+    margin-top:0;
+  }
+`
 
 const Navigation = styled.nav`
   height: 10vh;
@@ -96,8 +139,12 @@ const Navbar = () => {
 
   return (
     <Navigation>
-      <Logo />
-      <h5 style={{margin:"auto auto"}}>Yang's BLOG</h5>
+      {/* <Logo /> */}
+      {/* <Link to="/" style={{textDecoration:"none", borderStyle:"none"}}> */}
+      <Title to={"/"}>
+      <h5  style={{  borderStyle:"none" }}>Yang's BLOG</h5>
+      </Title>
+      {/* </Link> */}
       <Toggle
         navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}

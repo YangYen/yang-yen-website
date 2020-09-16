@@ -29,8 +29,10 @@ const Logo = () => {
   `)
   return (
     <LogoWrap as={Link} to="/">
-      <Img fluid={data.file.childImageSharp.fluid} alt="logo" />
+    {/* //   <Img fluid={data.file.childImageSharp.fluid} alt="logo" /> */}
+    <h5 style={{ margin: "auto auto" }}>Yang's BLOG</h5>
     </LogoWrap>
+
   )
 }
 

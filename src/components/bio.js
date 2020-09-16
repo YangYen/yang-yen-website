@@ -55,36 +55,36 @@ const Bio = () => {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
         childImageSharp {
-          fixed(pngQuality: 100) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
       igicon: file(absolutePath: { regex: "/instagram-icon.png/" }) {
         childImageSharp {
-          fixed(width: 60, height: 60, pngQuality: 100) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 60) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
       githubicon: file(absolutePath: { regex: "/github-icon.png/" }) {
         childImageSharp {
-          fixed(width: 60, height: 60, pngQuality: 100) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 60) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
       linkedinicon: file(absolutePath: { regex: "/linkedin-icon.png/" }) {
         childImageSharp {
-          fixed(width: 60, height: 60, pngQuality: 100) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 60) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
       youtubeicon: file(absolutePath: { regex: "/youtube-icon.png/" }) {
         childImageSharp {
-          fixed(width: 60, height: 60, pngQuality: 100) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 60) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -113,112 +113,126 @@ const Bio = () => {
       style={{
         display: `block`,
         // marginBottom: rhythm(2.5),
-        margin:"2% 0"
+        margin: "2% 0",
         // display:"inline",
         // textAlign: "center",
       }}
     >
       <div>
         <Jumbotron fluid style={{ color: "#FFFFFF" }}>
-          <Container fluid style={{ display:"inline", color:"grey" }}>
-          <Row xs="2">
-          <Col style={{ maxWidth:"30%",margin:"auto auto" }}>
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author.name}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 300,
-                minHeight: 150,
-                // borderRadius: `100%`,
-              }}
-              imgStyle={{
-                borderRadius: `10%`,
-              }}
-            />
-          </Col>
-          <Col style={{ maxWidth: "70%",textAlign: "center",margin:"auto auto" }}>
-            <h1>{author.name}</h1>
-            <p className="lead">
-            {author.summary}
-            </p>
-            <hr className="my-2" />
-            <p className="lead">
-            <NavItem to={`${social.instagram}`}>
-        <Image
-          fixed={data.igicon.childImageSharp.fixed}
-          alt={author.name}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginLeft: rhythm(1 / 2),
-            marginBottom: 0,
-            marginTop: rhythm(1.5),
-            // minWidth: 50,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
-        />
-      </NavItem>
+          <Container fluid style={{ display: "inline", color: "grey" }}>
+            <Row xs="2">
+              <Col style={{ maxWidth: "30%" }}>
+                <Image
+                  fluid={data.avatar.childImageSharp.fluid}
+                  alt={author.name}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginLeft: "25%",
+                    marginRight: "25%",
 
-      <NavItem to={`${social.github}`}>
-        <Image
-          fixed={data.githubicon.childImageSharp.fixed}
-          alt={author.name}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginLeft: rhythm(1 / 2),
-            marginBottom: 0,
-            marginTop: rhythm(1.5),
-            // minWidth: 50,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
-        />
-      </NavItem>
+                    // borderRadius: `100%`,
+                  }}
+                  imgStyle={{
+                    borderRadius: `5%`,
+                    marginBottom: 0,
+                  }}
+                />
+              </Col>
+              <Col style={{ minWidth: "70%", paddingRight: "7.5%" }}>
+                <h2>{author.name}</h2>
+                <p>{author.summary}</p>
+                <hr className="my-2" />
+                <Row xs="4">
+                  <Col style={{ maxWidth: "10%" }}>
+                    <a href={`${social.instagram}`}>
+                      <Image
+                        fluid={data.igicon.childImageSharp.fluid}
+                        alt={author.name}
+                        style={{
+                          // marginRight: rhythm(1 / 2),
+                          // marginLeft: rhythm(1 / 2),
 
-      <NavItem to={`${social.linkedin}`}>
-        <Image
-          fixed={data.linkedinicon.childImageSharp.fixed}
-          alt={author.name}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginLeft: rhythm(1 / 2),
-            marginBottom: 0,
-            marginTop: rhythm(1.5),
-            // minWidth: 50,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
-        />
-      </NavItem>
+                          // marginTop: rhythm(1.5),
+                          // minWidth: 50,
+                          // margin:"0 30%" ,
+                          borderRadius: `100%`,
+                        }}
+                        imgStyle={{
+                          borderRadius: `50%`,
+                          marginBottom: 0,
+                        }}
+                      />
+                    </a>
+                  </Col>
 
-      <NavItem to={`${social.youtube}`}>
-        <Image
-          fixed={data.youtubeicon.childImageSharp.fixed}
-          alt={author.name}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginLeft: rhythm(1 / 2),
-            marginBottom: 0,
-            marginTop: rhythm(1.5),
-            // minWidth: 50,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
-        />
-      </NavItem>
-            </p>
-            </Col>
-            
+                  <Col style={{ maxWidth: "10%" }}>
+                    <a href={`${social.github}`}>
+                      <Image
+                        fluid={data.githubicon.childImageSharp.fluid}
+                        alt={author.name}
+                        style={{
+                          // marginRight: rhythm(1 / 2),
+                          // marginLeft: rhythm(1 / 2),
+
+                          // marginTop: rhythm(1.5),
+                          // minWidth: 50,
+                          // margin:"0 30%" ,
+                          borderRadius: `100%`,
+                        }}
+                        imgStyle={{
+                          borderRadius: `50%`,
+                          marginBottom: 0,
+                        }}
+                      />
+                    </a>
+                  </Col>
+                  <Col style={{ maxWidth: "10%" }}>
+                    <a href={`${social.linkedin}`}>
+                      <Image
+                        fluid={data.linkedinicon.childImageSharp.fluid}
+                        alt={author.name}
+                        style={{
+                          // marginRight: rhythm(1 / 2),
+                          // marginLeft: rhythm(1 / 2),
+
+                          // marginTop: rhythm(1.5),
+                          // minWidth: 50,
+                          // margin:"0 30%" ,
+                          borderRadius: `100%`,
+                        }}
+                        imgStyle={{
+                          borderRadius: `50%`,
+                          marginBottom: 0,
+                        }}
+                      />
+                    </a>
+                  </Col>
+                  <Col style={{ maxWidth: "10%" }}>
+                    <a href={`${social.youtube}`}>
+                      <Image
+                        fluid={data.youtubeicon.childImageSharp.fluid}
+                        alt={author.name}
+                        style={{
+                          // marginRight: rhythm(1 / 2),
+                          // marginLeft: rhythm(1 / 2),
+
+                          // marginTop: rhythm(1.5),
+                          // minWidth: 50,
+                          // margin:"0 30%" ,
+                          borderRadius: `100%`,
+                        }}
+                        imgStyle={{
+                          borderRadius: `50%`,
+                          marginBottom: 0,
+                        }}
+                      />
+                    </a>
+                  </Col>
+                </Row>
+              </Col>
             </Row>
           </Container>
         </Jumbotron>
