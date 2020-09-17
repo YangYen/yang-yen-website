@@ -42,8 +42,6 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
 
-      <hr></hr>
-
       <Container
         style={{ padding: "auto 0", maxWidth: "100%", margin: "auto 0" }}
       >

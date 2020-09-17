@@ -21,7 +21,7 @@ const NavItem = styled(Link)`
   color: #111;
   display: inline-block;
   white-space: nowrap;
-  margin: 0 1vw;
+  margin: auto 1vw;
   transition: all 200ms ease-in;
   position: relative;
   box-shadow: none;
@@ -34,13 +34,13 @@ const NavItem = styled(Link)`
     width: 0%;
     content: ".";
     color: transparent;
-    background: goldenrod;
+    background: #0080FF;
     height: 1px;
     transition: all 0.4s ease-in;
   }
 
   :hover {
-    color: goldenrod;
+    color: #0080FF;
     text-decoration: none;
     opacity: 1;
     ::after {
@@ -119,7 +119,7 @@ const NavbarLinks = () => {
                     }}
                     caret
                   >
-                    <NavItem to={"/" + branch} style={{ margin: "auto auto" }}>
+                    <NavItem to={"/" + branch} >
                       {categoryname}
                     </NavItem>
                   </DropdownToggle>

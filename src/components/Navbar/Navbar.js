@@ -12,8 +12,7 @@ const Title = styled(Link)`
   color: #111;
   display: inline-block;
   white-space: nowrap;
-  margin: 0 1vw;
-  margin-top: 30px;
+  margin: auto 0;
   transition: all 200ms ease-in;
   position: relative;
   box-shadow: none;
@@ -26,13 +25,13 @@ const Title = styled(Link)`
     width: 0%;
     content: ".";
     color: transparent;
-    background: goldenrod;
+    background: #0080FF;
     height: 1px;
     transition: all 0.4s ease-in;
   }
 
   :hover {
-    color: goldenrod;
+    color: #0080FF;
     text-decoration: none;
     opacity: 1;
     ::after {
@@ -141,9 +140,12 @@ const Navbar = () => {
     <Navigation>
       {/* <Logo /> */}
       {/* <Link to="/" style={{textDecoration:"none", borderStyle:"none"}}> */}
+      
+      <Navbox>
       <Title to={"/"}>
       <h5  style={{  borderStyle:"none" }}>Yang's BLOG</h5>
       </Title>
+      </Navbox>
       {/* </Link> */}
       <Toggle
         navbarOpen={navbarOpen}
