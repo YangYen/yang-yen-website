@@ -55,6 +55,7 @@ const MainPageTemplate = ({ data, pageContext, location }) => {
           </article>
         )
       })}
+      <section dangerouslySetInnerHTML={{ __html: data.mainPagesInfo.html }} />
     </div>
   )
 
@@ -77,11 +78,18 @@ const MainPageTemplate = ({ data, pageContext, location }) => {
   )
 
   showYoutube = (
-    <div style={{margin:"0 auto", display:"block"}}>
+    <div style={{ margin: "0 auto", display: "block" }}>
       {youtubePosts.map(({ node }) => {
         const videoId = node.videoId
-        const url = 'https://www.youtube.com/embed/'+videoId
-        return <iframe src={url} width="100%" height="600" allowfullscreen="true"></iframe>
+        const url = "https://www.youtube.com/embed/" + videoId
+        return (
+          <iframe
+            src={url}
+            width="100%"
+            height="600"
+            allowfullscreen="true"
+          ></iframe>
+        )
       })}
     </div>
   )
@@ -92,9 +100,7 @@ const MainPageTemplate = ({ data, pageContext, location }) => {
   ) {
     return (
       <Layout location={location} title={siteTitle}>
-        <div>
-          {showPhoto}
-        </div>
+        <div>{fundamentalShow}{showPhoto}</div>
       </Layout>
     )
   } else if (
@@ -154,6 +160,16 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    mainPagesInfo : markdownRemark(
+      frontmatter: { type: { eq: "medium_page" }, branch: { eq: $category } }
+    ) {
+      frontmatter {
+        branch
+        description
+        type
+      }
+      html
     }
     allMarkdownRemark(
       filter: {
