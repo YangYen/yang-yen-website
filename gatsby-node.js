@@ -22,6 +22,23 @@ exports.createPages = async ({ graphql, actions }) => {
               frontmatter {
                 title
                 category
+                branch
+              }
+            }
+          }
+        }
+        mainPages: allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 1000
+          filter: { frontmatter: { type: { eq: "medium_page" } } }
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                branch
               }
             }
           }
@@ -36,6 +53,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
+  const postsForMainPages = result.data.mainPages.edges
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -50,15 +68,15 @@ exports.createPages = async ({ graphql, actions }) => {
         next,
       },
     })
+  })
 
+  postsForMainPages.forEach(post => {
     createPage({
-      path: post.node.frontmatter.category,
+      path: post.node.frontmatter.branch,
       component: mainPages,
       context: {
-        category: post.node.frontmatter.category,
-        slug: post.node.fields.slug,
-        previous,
-        next,
+        category: post.node.frontmatter.branch,
+        // slug: post.node.frontmatter.branch,
       },
     })
   })
@@ -71,12 +89,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
-      node,
-      value,
-    })
-
-    createNodeField({
-      name: `category`,
       node,
       value,
     })

@@ -93,7 +93,6 @@ const MainPageTemplate = ({ data, pageContext, location }) => {
     return (
       <Layout location={location} title={siteTitle}>
         <div>
-          {fundamentalShow}
           {showPhoto}
         </div>
       </Layout>
