@@ -15,7 +15,6 @@ module.exports = {
       youtube: `https://www.youtube.com/channel/UC3ZfsIHLYW_A7RTL0CSpe2Q`,
     },
     mainPages: {
-      aboutMe: `aboutMe`,
       aboutSport: `aboutSport`,
       aboutMusic: `aboutMusic`,
       aboutTech: `aboutTech`,
@@ -33,13 +32,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/about_me`,
-        name: `about_me`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         path: `${__dirname}/content/about_music`,
         name: `about_music`,
       },
@@ -49,13 +41,6 @@ module.exports = {
       options: {
         path: `${__dirname}/content/about_photo`,
         name: `about_photo`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/about_sport`,
-        name: `about_sport`,
       },
     },
     {

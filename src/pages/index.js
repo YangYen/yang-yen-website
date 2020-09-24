@@ -145,14 +145,6 @@ export const pageQuery = graphql`
     ) {
       totalCount
     }
-    mePageCount: allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        frontmatter: { type: { eq: "basic_page" }, branch: { eq: "aboutme" } }
-      }
-    ) {
-      totalCount
-    }
     musicPageCount: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
