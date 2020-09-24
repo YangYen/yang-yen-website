@@ -34,13 +34,13 @@ const NavItem = styled(Link)`
     width: 0%;
     content: ".";
     color: transparent;
-    background: #0080FF;
+    background: #0080ff;
     height: 1px;
     transition: all 0.4s ease-in;
   }
 
   :hover {
-    color: #0080FF;
+    color: #0080ff;
     text-decoration: none;
     opacity: 1;
     ::after {
@@ -119,9 +119,7 @@ const NavbarLinks = () => {
                     }}
                     caret
                   >
-                    <NavItem to={"/" + branch} >
-                      {categoryname}
-                    </NavItem>
+                    <NavItem to={"/" + branch}>{categoryname}</NavItem>
                   </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem header>

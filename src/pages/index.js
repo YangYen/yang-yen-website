@@ -50,7 +50,6 @@ const BlogIndex = ({ data, location }) => {
           {posts.map(({ node }) => {
             const title = node.frontmatter.branch
             const titleName = node.frontmatter.categoryname
-            const description = node.frontmatter.description
             const featuredImgFluid =
               node.frontmatter.featuredImage.childImageSharp.fluid
 
@@ -62,39 +61,23 @@ const BlogIndex = ({ data, location }) => {
                       {/* <Button outline color="secondary"> */}
                       <Link style={{ boxShadow: `none` }} to={title}>
                         <Card inverse style={{ textAlign: "center" }}>
-                          {/* <CardImg
-                        top
-                        width="100%"
-                        src={featuredImgFluid}
-                        alt="Card image cap"
-                      /> */}
-                          {/* <CardImg fluid={featuredImgFluid}/> */}
                           <Img fluid={featuredImgFluid} />
                           <CardImgOverlay style={{ marginTop: "5%" }}>
-                            {/* <CardBody> */}
-                            <CardTitle style={{ fontSize: 35 }}>
+                            <CardTitle
+                              style={{ fontSize: "2.5rem", margin: "10% auto" }}
+                            >
                               {titleName}
                             </CardTitle>
-                            <CardSubtitle>
-                              LastUpdate On 2020/08/28
-                            </CardSubtitle>
-                            <CardText style={{ marginTop: "15%" }}>
-                              {description}
-                            </CardText>
-                            {/* <Button>Button</Button> */}
-                            {/* </CardBody> */}
+                            <CardSubtitle></CardSubtitle>
                           </CardImgOverlay>
                         </Card>
                       </Link>
-                      {/* </Button> */}
                     </Col>
                   }
                 </header>
               </article>
             )
           })}
-
-          {/* </CardDeck> */}
         </Row>
       </Container>
     </Layout>

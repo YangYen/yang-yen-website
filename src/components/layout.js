@@ -52,27 +52,16 @@ const Layout = ({ location, title, children, pageInfo }) => {
   return (
     <>
       <Navbar pageInfo={pageInfo} />
-      <div
-        style={
-          {
-            // marginLeft: `auto`,
-            // marginRight: `auto`,
-            // maxWidth: "87.5%",
-            // margin:"0 0"
-            // padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          }
-        }
-      >
-        {/* <header>{header}</header> */}
+      <div>
         <main>{children}</main>
 
         <hr></hr>
         <footer>
-          
           <Bio />
-          <p>© {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <p>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
           </p>
         </footer>
       </div>

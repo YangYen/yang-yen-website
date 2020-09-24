@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import NavbarLinks from "./NavbarLinks"
 import Logo from "./Logo"
 import styled from "styled-components"
-import {Link} from "gatsby"
+import { Link } from "gatsby"
 import NavItem from "./NavbarLinks"
 
 const Title = styled(Link)`
@@ -25,13 +25,13 @@ const Title = styled(Link)`
     width: 0%;
     content: ".";
     color: transparent;
-    background: #0080FF;
+    background: #0080ff;
     height: 1px;
     transition: all 0.4s ease-in;
   }
 
   :hover {
-    color: #0080FF;
+    color: #0080ff;
     text-decoration: none;
     opacity: 1;
     ::after {
@@ -43,7 +43,7 @@ const Title = styled(Link)`
     padding: 20px 0;
     font-size: 1.5rem;
     z-index: 6;
-    margin-top:0;
+    margin-top: 0;
   }
 `
 
@@ -138,15 +138,11 @@ const Navbar = () => {
 
   return (
     <Navigation>
-      {/* <Logo /> */}
-      {/* <Link to="/" style={{textDecoration:"none", borderStyle:"none"}}> */}
-      
       <Navbox>
-      <Title to={"/"}>
-      <h5  style={{  borderStyle:"none" }}>Yang's BLOG</h5>
-      </Title>
+        <Title to={"/"}>
+          <h5 style={{ borderStyle: "none" }}>Yang's BLOG</h5>
+        </Title>
       </Navbox>
-      {/* </Link> */}
       <Toggle
         navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}

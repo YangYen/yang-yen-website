@@ -112,10 +112,8 @@ const Bio = () => {
     <div
       style={{
         display: `block`,
-        // marginBottom: rhythm(2.5),
+
         margin: "2% 0",
-        // display:"inline",
-        // textAlign: "center",
       }}
     >
       <div>
@@ -132,8 +130,6 @@ const Bio = () => {
                     justifyContent: "center",
                     marginLeft: "25%",
                     marginRight: "25%",
-
-                    // borderRadius: `100%`,
                   }}
                   imgStyle={{
                     borderRadius: `5%`,
@@ -152,12 +148,6 @@ const Bio = () => {
                         fluid={data.igicon.childImageSharp.fluid}
                         alt={author.name}
                         style={{
-                          // marginRight: rhythm(1 / 2),
-                          // marginLeft: rhythm(1 / 2),
-
-                          // marginTop: rhythm(1.5),
-                          // minWidth: 50,
-                          // margin:"0 30%" ,
                           borderRadius: `100%`,
                         }}
                         imgStyle={{
@@ -174,12 +164,6 @@ const Bio = () => {
                         fluid={data.githubicon.childImageSharp.fluid}
                         alt={author.name}
                         style={{
-                          // marginRight: rhythm(1 / 2),
-                          // marginLeft: rhythm(1 / 2),
-
-                          // marginTop: rhythm(1.5),
-                          // minWidth: 50,
-                          // margin:"0 30%" ,
                           borderRadius: `100%`,
                         }}
                         imgStyle={{
@@ -195,12 +179,6 @@ const Bio = () => {
                         fluid={data.linkedinicon.childImageSharp.fluid}
                         alt={author.name}
                         style={{
-                          // marginRight: rhythm(1 / 2),
-                          // marginLeft: rhythm(1 / 2),
-
-                          // marginTop: rhythm(1.5),
-                          // minWidth: 50,
-                          // margin:"0 30%" ,
                           borderRadius: `100%`,
                         }}
                         imgStyle={{
@@ -216,12 +194,6 @@ const Bio = () => {
                         fluid={data.youtubeicon.childImageSharp.fluid}
                         alt={author.name}
                         style={{
-                          // marginRight: rhythm(1 / 2),
-                          // marginLeft: rhythm(1 / 2),
-
-                          // marginTop: rhythm(1.5),
-                          // minWidth: 50,
-                          // margin:"0 30%" ,
                           borderRadius: `100%`,
                         }}
                         imgStyle={{
